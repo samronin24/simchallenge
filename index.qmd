@@ -7,7 +7,6 @@ format:
 execute:
   echo: true
   eval: true
-  python:
 ---
 
 # 🎲 Simulation Challenge - Monte Carlo Analysis
@@ -15,3 +14,89 @@ execute:
 ## Challenge Overview
 
 **Your Mission:** Create a comprehensive Quarto document that simulates one or two investment strategies, analyzes the results, and demonstrates your ability to present counter-intuitive findings compellingly. Then render the document to HTML and deploy it via GitHub Pages from a new repository called "simulationChallenge."
+
+## The Investment Game 🎯
+
+### Original Game Strategy
+
+Imagine you are offered the following game and given a $1,000 budget in a special account to play the game: I will flip a coin, and if it comes up heads, we increase your account's balance by 50%; if it comes up tails, we reduce your account's balance by 40%. We are not only doing this once, but we will do it once per year until you turn 55. When you turn 55, you will receive the balance in your account.
+
+## Challenge Requirements 📋
+
+### Questions to Answer for 75% Grade on Challenge
+
+1. **Expected Value Analysis:** What is the "expected value" of your account balance after 1 coin flip for the original game?
+
+2. **Expectation vs. Reality:** Is the expected value positive or negative? Do you expect your account to be worth more or less than $1,000 based on this result?
+
+3. **Single Simulation:** Run one simulation showing the dynamics of your account balance over time. Make an object-oriented matplotlib OR ggplot2 plot showing your simulated account balance over time (i.e. as you age). Comment on the results, are you happy?
+
+### Questions to Answer for 85% Grade on Challenge
+
+4. **Multiple Simulations:** Run 100 simulations modelling the dynamics of your account balance over time. Make an object-oriented matplotlib OR ggplot2 plot showing a probability distribution of the 100 simulated account balance at age 55. Comment on the results, are you happy? Why or why not?
+
+### Questions to Answer for 95% Grade on Challenge
+
+5. **Probability Analysis:** Based on the 100 simulations above, what is the probability that your account balance will be greater than $1,000 at age 55?
+
+### Questions to Answer for 100% Grade on Challenge
+
+6. **Strategy Comparison:** Run 100 simulations for the modified game strategy shown below. What is the probability that your account balance will be greater than $10,000 at age 55? Is this probability higher or lower than the probability in the original game?
+
+### Modified Game Strategy
+
+Imagine you are offered the following game and given a $1,000 budget in a special account to play the game: I will flip a coin, and if it comes up heads, we increase your bet by 50%; if it comes up tails, we reduce your bet by 40%. You must bet exactly 50% of your current account balance on each flip, and this 50% is locked in for each round. We are not only doing this once, but we will do it once per year until you turn 55. When you turn 55, you will receive the balance in your account.
+
+## Getting Started
+
+This document is now ready for you to add your simulation code and analysis. You can start by adding R or Python code blocks to work through the challenge questions.
+
+### Example R Code Block
+
+```{r}
+#| label: example-r
+#| echo: true
+
+# Set seed for reproducibility
+set.seed(123)
+
+# Simple example calculation
+initial_balance <- 1000
+gain_rate <- 0.5
+loss_rate <- 0.4
+
+# Expected value calculation
+expected_value <- initial_balance * (0.5 * (1 + gain_rate) + 0.5 * (1 - loss_rate))
+print(paste("Expected value after one flip:", expected_value))
+```
+
+### Example Python Code Block
+
+```python
+#| label: example-python
+#| echo: true
+#| eval: false
+
+import numpy as np
+
+# Set seed for reproducibility
+np.random.seed(123)
+
+# Simple example calculation
+initial_balance = 1000
+gain_rate = 0.5
+loss_rate = 0.4
+
+# Expected value calculation
+expected_value = initial_balance * (0.5 * (1 + gain_rate) + 0.5 * (1 - loss_rate))
+print(f"Expected value after one flip: {expected_value}")
+```
+
+## Next Steps
+
+1. Add your simulation code for each question
+2. Create visualizations showing your results
+3. Provide clear interpretations of your findings
+4. Deploy to GitHub Pages when complete
+
+Good luck with your simulation challenge! 🎲

@@ -65,6 +65,46 @@
 \fi
 \makeatother
 
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
@@ -185,6 +225,160 @@ simulates one or two investment strategies, analyzes the results, and
 demonstrates your ability to present counter-intuitive findings
 compellingly. Then render the document to HTML and deploy it via GitHub
 Pages from a new repository called ``simulationChallenge.''
+
+\subsection{The Investment Game 🎯}\label{the-investment-game}
+
+\subsubsection{Original Game Strategy}\label{original-game-strategy}
+
+Imagine you are offered the following game and given a \$1,000 budget in
+a special account to play the game: I will flip a coin, and if it comes
+up heads, we increase your account's balance by 50\%; if it comes up
+tails, we reduce your account's balance by 40\%. We are not only doing
+this once, but we will do it once per year until you turn 55. When you
+turn 55, you will receive the balance in your account.
+
+\subsection{Challenge Requirements 📋}\label{challenge-requirements}
+
+\subsubsection{Questions to Answer for 75\% Grade on
+Challenge}\label{questions-to-answer-for-75-grade-on-challenge}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Expected Value Analysis:} What is the ``expected value'' of
+  your account balance after 1 coin flip for the original game?
+\item
+  \textbf{Expectation vs.~Reality:} Is the expected value positive or
+  negative? Do you expect your account to be worth more or less than
+  \$1,000 based on this result?
+\item
+  \textbf{Single Simulation:} Run one simulation showing the dynamics of
+  your account balance over time. Make an object-oriented matplotlib OR
+  ggplot2 plot showing your simulated account balance over time (i.e.~as
+  you age). Comment on the results, are you happy?
+\end{enumerate}
+
+\subsubsection{Questions to Answer for 85\% Grade on
+Challenge}\label{questions-to-answer-for-85-grade-on-challenge}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  \textbf{Multiple Simulations:} Run 100 simulations modelling the
+  dynamics of your account balance over time. Make an object-oriented
+  matplotlib OR ggplot2 plot showing a probability distribution of the
+  100 simulated account balance at age 55. Comment on the results, are
+  you happy? Why or why not?
+\end{enumerate}
+
+\subsubsection{Questions to Answer for 95\% Grade on
+Challenge}\label{questions-to-answer-for-95-grade-on-challenge}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  \textbf{Probability Analysis:} Based on the 100 simulations above,
+  what is the probability that your account balance will be greater than
+  \$1,000 at age 55?
+\end{enumerate}
+
+\subsubsection{Questions to Answer for 100\% Grade on
+Challenge}\label{questions-to-answer-for-100-grade-on-challenge}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  \textbf{Strategy Comparison:} Run 100 simulations for the modified
+  game strategy shown below. What is the probability that your account
+  balance will be greater than \$10,000 at age 55? Is this probability
+  higher or lower than the probability in the original game?
+\end{enumerate}
+
+\subsubsection{Modified Game Strategy}\label{modified-game-strategy}
+
+Imagine you are offered the following game and given a \$1,000 budget in
+a special account to play the game: I will flip a coin, and if it comes
+up heads, we increase your bet by 50\%; if it comes up tails, we reduce
+your bet by 40\%. You must bet exactly 50\% of your current account
+balance on each flip, and this 50\% is locked in for each round. We are
+not only doing this once, but we will do it once per year until you turn
+55. When you turn 55, you will receive the balance in your account.
+
+\subsection{Getting Started}\label{getting-started}
+
+This document is now ready for you to add your simulation code and
+analysis. You can start by adding R or Python code blocks to work
+through the challenge questions.
+
+\subsubsection{Example R Code Block}\label{example-r-code-block}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Set seed for reproducibility}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+
+\CommentTok{\# Simple example calculation}
+\NormalTok{initial\_balance }\OtherTok{\textless{}{-}} \DecValTok{1000}
+\NormalTok{gain\_rate }\OtherTok{\textless{}{-}} \FloatTok{0.5}
+\NormalTok{loss\_rate }\OtherTok{\textless{}{-}} \FloatTok{0.4}
+
+\CommentTok{\# Expected value calculation}
+\NormalTok{expected\_value }\OtherTok{\textless{}{-}}\NormalTok{ initial\_balance }\SpecialCharTok{*}\NormalTok{ (}\FloatTok{0.5} \SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ gain\_rate) }\SpecialCharTok{+} \FloatTok{0.5} \SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ loss\_rate))}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Expected value after one flip:"}\NormalTok{, expected\_value))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Expected value after one flip: 1050"
+\end{verbatim}
+
+\subsubsection{Example Python Code
+Block}\label{example-python-code-block}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#| label: example{-}python}
+\CommentTok{\#| echo: true}
+\CommentTok{\#| eval: false}
+
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+
+\CommentTok{\# Set seed for reproducibility}
+\NormalTok{np.random.seed(}\DecValTok{123}\NormalTok{)}
+
+\CommentTok{\# Simple example calculation}
+\NormalTok{initial\_balance }\OperatorTok{=} \DecValTok{1000}
+\NormalTok{gain\_rate }\OperatorTok{=} \FloatTok{0.5}
+\NormalTok{loss\_rate }\OperatorTok{=} \FloatTok{0.4}
+
+\CommentTok{\# Expected value calculation}
+\NormalTok{expected\_value }\OperatorTok{=}\NormalTok{ initial\_balance }\OperatorTok{*}\NormalTok{ (}\FloatTok{0.5} \OperatorTok{*}\NormalTok{ (}\DecValTok{1} \OperatorTok{+}\NormalTok{ gain\_rate) }\OperatorTok{+} \FloatTok{0.5} \OperatorTok{*}\NormalTok{ (}\DecValTok{1} \OperatorTok{{-}}\NormalTok{ loss\_rate))}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Expected value after one flip: }\SpecialCharTok{\{}\NormalTok{expected\_value}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Next Steps}\label{next-steps}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Add your simulation code for each question
+\item
+  Create visualizations showing your results
+\item
+  Provide clear interpretations of your findings
+\item
+  Deploy to GitHub Pages when complete
+\end{enumerate}
+
+Good luck with your simulation challenge! 🎲
 
 
 
