@@ -251,7 +251,7 @@ demonstrates your ability to present counter-intuitive findings
 compellingly. Then render the document to HTML and deploy it via GitHub
 Pages from a new repository called ``simulationChallenge.''
 
-\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colbacktitle=quarto-callout-warning-color!10!white, coltitle=black, leftrule=.75mm, colback=white, colframe=quarto-callout-warning-color-frame, breakable, rightrule=.15mm, toprule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{⚠️ AI Partnership Required}, bottomrule=.15mm, opacityback=0, bottomtitle=1mm, left=2mm, toptitle=1mm, arc=.35mm, opacitybacktitle=0.6]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, leftrule=.75mm, toptitle=1mm, bottomtitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{⚠️ AI Partnership Required}, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, arc=.35mm, coltitle=black, colback=white, breakable, titlerule=0mm, colframe=quarto-callout-warning-color-frame, toprule=.15mm, bottomrule=.15mm, left=2mm, opacitybacktitle=0.6]
 
 This challenge pushes boundaries intentionally. You'll tackle problems
 that normally require weeks of study, but with Cursor AI as your partner
@@ -284,19 +284,6 @@ turn 55, you will receive the balance in your account.
 \subsubsection{Generative DAG Model for the Investment
 Game}\label{generative-dag-model-for-the-investment-game}
 
-\begin{figure}
-
-\centering{
-
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-investment-dag-1.pdf}}
-
-}
-
-\caption{\label{fig-investment-dag}Generative DAG model for the
-investment game showing how wealth evolves over time through coin flips}
-
-\end{figure}%
-
 \subsection{Challenge Requirements 📋}\label{challenge-requirements}
 
 \subsubsection{Minimum Requirements for Any Points on
@@ -309,7 +296,7 @@ Challenge}\label{minimum-requirements-for-any-points-on-challenge}
   file that includes a narrative of what you are doing along with the
   requested code, results, and visualizations of your simulations.
 
-  \begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, coltitle=black, leftrule=.75mm, colback=white, colframe=quarto-callout-tip-color-frame, breakable, rightrule=.15mm, toprule=.15mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{💡 Pro Tip: Source File Reference}, bottomrule=.15mm, opacityback=0, bottomtitle=1mm, left=2mm, toptitle=1mm, arc=.35mm, opacitybacktitle=0.6]
+  \begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, leftrule=.75mm, toptitle=1mm, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{💡 Pro Tip: Source File Reference}, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, arc=.35mm, coltitle=black, colback=white, breakable, titlerule=0mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, bottomrule=.15mm, left=2mm, opacitybacktitle=0.6]
 
   \textbf{Need help with Quarto syntax or DAFT diagrams?} You can find
   the complete source \texttt{.qmd} file for this challenge at:
@@ -362,19 +349,151 @@ Challenge}\label{questions-to-answer-for-75-grade-on-challenge}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
+\tightlist
 \item
   \textbf{Expected Value Analysis:} What is the ``expected value'' of
   your account balance after 1 coin flip for the original game?
+\end{enumerate}
+
+\subsection{The expected value of the account balance after 1 coin flip
+for the original game is \$1000 * (0.5 * 1.5 + 0.5 * 0.6) = \$1050.
+Therefore, the expected value is positive and
+\$1050.}\label{the-expected-value-of-the-account-balance-after-1-coin-flip-for-the-original-game-is-1000-0.5-1.5-0.5-0.6-1050.-therefore-the-expected-value-is-positive-and-1050.}
+
+\phantomsection\label{q1-expected-value}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{initial\_balance }\OperatorTok{=} \DecValTok{1000}
+\NormalTok{gain\_rate }\OperatorTok{=} \FloatTok{0.5}    \CommentTok{\# +50\% on heads}
+\NormalTok{loss\_rate }\OperatorTok{=} \FloatTok{0.4}    \CommentTok{\# {-}40\% on tails}
+
+\CommentTok{\# Expected value after one flip:}
+\CommentTok{\# E[B1] = 0.5 * (B0 * 1.5) + 0.5 * (B0 * 0.6)}
+\NormalTok{expected\_value }\OperatorTok{=}\NormalTok{ initial\_balance }\OperatorTok{*}\NormalTok{ (}\FloatTok{0.5} \OperatorTok{*}\NormalTok{ (}\DecValTok{1} \OperatorTok{+}\NormalTok{ gain\_rate) }\OperatorTok{+} \FloatTok{0.5} \OperatorTok{*}\NormalTok{ (}\DecValTok{1} \OperatorTok{{-}}\NormalTok{ loss\_rate))}
+
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Starting balance: $}\SpecialCharTok{\{}\NormalTok{initial\_balance}\SpecialCharTok{:,.0f\}}\SpecialStringTok{"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Expected value after one flip: $}\SpecialCharTok{\{}\NormalTok{expected\_value}\SpecialCharTok{:,.0f\}}\SpecialStringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Starting balance: $1,000
+Expected value after one flip: $1,050
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
 \item
   \textbf{Expectation vs.~Reality:} Is the expected value positive or
   negative? Do you expect your account to be worth more or less than
   \$1,000 based on this result?
+\end{enumerate}
+
+\subsection{The expected value is positive with a gain of \$50.
+Therefore, I expect my account to be worth more than
+\$1,000.}\label{the-expected-value-is-positive-with-a-gain-of-50.-therefore-i-expect-my-account-to-be-worth-more-than-1000.}
+
+\phantomsection\label{q2-expectation-vs-reality}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{initial\_balance }\OperatorTok{=} \DecValTok{1000}
+\NormalTok{gain\_rate }\OperatorTok{=} \FloatTok{0.5}   \CommentTok{\# +50\% on heads}
+\NormalTok{loss\_rate }\OperatorTok{=} \FloatTok{0.4}   \CommentTok{\# {-}40\% on tails}
+\NormalTok{p\_heads }\OperatorTok{=} \FloatTok{0.5}
+\NormalTok{p\_tails }\OperatorTok{=} \FloatTok{0.5}
+
+\NormalTok{balance\_if\_heads }\OperatorTok{=}\NormalTok{ initial\_balance }\OperatorTok{*}\NormalTok{ (}\DecValTok{1} \OperatorTok{+}\NormalTok{ gain\_rate)}
+\NormalTok{balance\_if\_tails }\OperatorTok{=}\NormalTok{ initial\_balance }\OperatorTok{*}\NormalTok{ (}\DecValTok{1} \OperatorTok{{-}}\NormalTok{ loss\_rate)}
+\NormalTok{expected\_value }\OperatorTok{=}\NormalTok{ p\_heads }\OperatorTok{*}\NormalTok{ balance\_if\_heads }\OperatorTok{+}\NormalTok{ p\_tails }\OperatorTok{*}\NormalTok{ balance\_if\_tails}
+
+\NormalTok{is\_positive }\OperatorTok{=}\NormalTok{ expected\_value }\OperatorTok{\textgreater{}}\NormalTok{ initial\_balance}
+
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Expected value: $}\SpecialCharTok{\{}\NormalTok{expected\_value}\SpecialCharTok{:,.0f\}}\SpecialStringTok{"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Is expected value positive?"}\NormalTok{, }\StringTok{"Yes"} \ControlFlowTok{if}\NormalTok{ expected\_value }\OperatorTok{\textgreater{}}\NormalTok{ initial\_balance }\ControlFlowTok{else} \StringTok{"No"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Expected balance \textgreater{} $1,000?"}\NormalTok{, }\StringTok{"Yes"} \ControlFlowTok{if}\NormalTok{ is\_positive }\ControlFlowTok{else} \StringTok{"No"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Expected value: $1,050
+Is expected value positive? Yes
+Expected balance > $1,000? Yes
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
 \item
   \textbf{Single Simulation:} Run one simulation showing the dynamics of
   your account balance over time. Make an object-oriented matplotlib OR
   ggplot2 plot showing your simulated account balance over time (i.e.~as
   you age). Comment on the results, are you happy?
 \end{enumerate}
+
+\subsection{Answer: Below is a single simulation of the original game
+(multiplicative: +50\% on heads, -40\% on tails) over 30 years with an
+object-oriented Matplotlib plot. The final balance can vary greatly; a
+single path can end very high or very low, so happiness depends on the
+particular sequence of flips. Overall, years 10 to mid 20, I am not too
+happy because my account balance is very low. Moreover, starting with
+\$!,000 at age 0 and ending with \$200 at age 30, I lost over \$800
+which is not a good outcome of the simulation; I would have preferred to
+see my account balance grow over
+time.}\label{answer-below-is-a-single-simulation-of-the-original-game-multiplicative-50-on-heads--40-on-tails-over-30-years-with-an-object-oriented-matplotlib-plot.-the-final-balance-can-vary-greatly-a-single-path-can-end-very-high-or-very-low-so-happiness-depends-on-the-particular-sequence-of-flips.-overall-years-10-to-mid-20-i-am-not-too-happy-because-my-account-balance-is-very-low.-moreover-starting-with-000-at-age-0-and-ending-with-200-at-age-30-i-lost-over-800-which-is-not-a-good-outcome-of-the-simulation-i-would-have-preferred-to-see-my-account-balance-grow-over-time.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+
+\CommentTok{\# Reproducibility}
+\NormalTok{np.random.seed(}\DecValTok{123}\NormalTok{)}
+
+\CommentTok{\# Parameters (original game rules)}
+\NormalTok{initial\_balance }\OperatorTok{=} \FloatTok{1000.0}
+\NormalTok{n\_years }\OperatorTok{=} \DecValTok{30}  \CommentTok{\# simulate 30 annual flips (e.g., age 25 to 55)}
+\NormalTok{p\_heads }\OperatorTok{=} \FloatTok{0.5}
+
+\CommentTok{\# Simulate coin flips: 1 = heads (+50\%), 0 = tails ({-}40\%)}
+\NormalTok{flips }\OperatorTok{=}\NormalTok{ np.random.binomial(n}\OperatorTok{=}\DecValTok{1}\NormalTok{, p}\OperatorTok{=}\NormalTok{p\_heads, size}\OperatorTok{=}\NormalTok{n\_years)}
+
+\CommentTok{\# Evolve balance multiplicatively}
+\NormalTok{balances }\OperatorTok{=}\NormalTok{ [initial\_balance]}
+\ControlFlowTok{for}\NormalTok{ flip }\KeywordTok{in}\NormalTok{ flips:}
+    \ControlFlowTok{if}\NormalTok{ flip }\OperatorTok{==} \DecValTok{1}\NormalTok{:}
+\NormalTok{        balances.append(balances[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{] }\OperatorTok{*} \FloatTok{1.5}\NormalTok{)}
+    \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{        balances.append(balances[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{] }\OperatorTok{*} \FloatTok{0.6}\NormalTok{)}
+
+\CommentTok{\# Create time index (years 0..n\_years)}
+\NormalTok{years }\OperatorTok{=}\NormalTok{ np.arange(n\_years }\OperatorTok{+} \DecValTok{1}\NormalTok{)}
+
+\CommentTok{\# OO Matplotlib plot}
+\NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{9}\NormalTok{, }\DecValTok{5}\NormalTok{))}
+\NormalTok{ax.plot(years, balances, color}\OperatorTok{=}\StringTok{\textquotesingle{}steelblue\textquotesingle{}}\NormalTok{, linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{, marker}\OperatorTok{=}\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{, markersize}\OperatorTok{=}\DecValTok{4}\NormalTok{)}
+\NormalTok{ax.set\_title(}\StringTok{\textquotesingle{}Single Simulation: Account Balance Over Time (Original Game)\textquotesingle{}}\NormalTok{, fontsize}\OperatorTok{=}\DecValTok{13}\NormalTok{, fontweight}\OperatorTok{=}\StringTok{\textquotesingle{}bold\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax.set\_xlabel(}\StringTok{\textquotesingle{}Year\textquotesingle{}}\NormalTok{, fontsize}\OperatorTok{=}\DecValTok{11}\NormalTok{)}
+\NormalTok{ax.set\_ylabel(}\StringTok{\textquotesingle{}Account Balance ($)\textquotesingle{}}\NormalTok{, fontsize}\OperatorTok{=}\DecValTok{11}\NormalTok{)}
+\NormalTok{ax.grid(}\VariableTok{True}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.3}\NormalTok{)}
+
+\CommentTok{\# Format y{-}axis as currency}
+\NormalTok{ax.yaxis.set\_major\_formatter(plt.FuncFormatter(}\KeywordTok{lambda}\NormalTok{ x, \_: }\SpecialStringTok{f\textquotesingle{}$}\SpecialCharTok{\{}\NormalTok{x}\SpecialCharTok{:,.0f\}}\SpecialStringTok{\textquotesingle{}}\NormalTok{))}
+
+\NormalTok{plt.tight\_layout()}
+\NormalTok{plt.show()}
+
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Final balance after }\SpecialCharTok{\{}\NormalTok{n\_years}\SpecialCharTok{\}}\SpecialStringTok{ years: $}\SpecialCharTok{\{}\NormalTok{balances[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{]}\SpecialCharTok{:,.2f\}}\SpecialStringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/q3-single-simulation-output-1.pdf}}
+
+\begin{verbatim}
+Final balance after 30 years: $205.89
+\end{verbatim}
 
 \subsubsection{Questions to Answer for 85\% Grade on
 Challenge}\label{questions-to-answer-for-85-grade-on-challenge}
@@ -391,6 +510,126 @@ Challenge}\label{questions-to-answer-for-85-grade-on-challenge}
   you happy? Why or why not?
 \end{enumerate}
 
+\subsection{Answer: Below are 100 simulations of the original game over
+30 years (age 25 to 55) with a Matplotlib histogram showing the
+distribution of final balances. I did buckets for every \$500 and for
+any value above \$10,000, I placed it in that bucket. I am not very
+happy with the results because there is a 70\% chance that my account
+balance by age 55 will be below the \$1,000 threshold. Therefore, I am
+not a risky player so there is no point of me trying to play this game
+since most likely, I will end up losing money. There is a small chance
+to hit the lottery and end up with over \$10,000, but that risk is not
+worth it
+statistically.}\label{answer-below-are-100-simulations-of-the-original-game-over-30-years-age-25-to-55-with-a-matplotlib-histogram-showing-the-distribution-of-final-balances.-i-did-buckets-for-every-500-and-for-any-value-above-10000-i-placed-it-in-that-bucket.-i-am-not-very-happy-with-the-results-because-there-is-a-70-chance-that-my-account-balance-by-age-55-will-be-below-the-1000-threshold.-therefore-i-am-not-a-risky-player-so-there-is-no-point-of-me-trying-to-play-this-game-since-most-likely-i-will-end-up-losing-money.-there-is-a-small-chance-to-hit-the-lottery-and-end-up-with-over-10000-but-that-risk-is-not-worth-it-statistically.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+
+\CommentTok{\# Reproducibility}
+\NormalTok{np.random.seed(}\DecValTok{456}\NormalTok{)}
+
+\CommentTok{\# Parameters (original game rules)}
+\NormalTok{initial\_balance }\OperatorTok{=} \FloatTok{1000.0}
+\NormalTok{n\_years }\OperatorTok{=} \DecValTok{30}  \CommentTok{\# simulate 30 annual flips (age 25 to 55)}
+\NormalTok{n\_sims }\OperatorTok{=} \DecValTok{100}
+\NormalTok{p\_heads }\OperatorTok{=} \FloatTok{0.5}
+
+\CommentTok{\# Function to simulate one path}
+\KeywordTok{def}\NormalTok{ simulate\_one\_path(initial, years):}
+\NormalTok{    balance }\OperatorTok{=}\NormalTok{ initial}
+    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(years):}
+\NormalTok{        flip }\OperatorTok{=}\NormalTok{ np.random.binomial(}\DecValTok{1}\NormalTok{, p\_heads)}
+        \ControlFlowTok{if}\NormalTok{ flip }\OperatorTok{==} \DecValTok{1}\NormalTok{:}
+\NormalTok{            balance }\OperatorTok{*=} \FloatTok{1.5}  \CommentTok{\# +50\% on heads}
+        \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{            balance }\OperatorTok{*=} \FloatTok{0.6}   \CommentTok{\# {-}40\% on tails}
+    \ControlFlowTok{return}\NormalTok{ balance}
+
+\CommentTok{\# Run 100 simulations}
+\NormalTok{final\_balances }\OperatorTok{=}\NormalTok{ [simulate\_one\_path(initial\_balance, n\_years) }\ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(n\_sims)]}
+
+\CommentTok{\# OO Matplotlib histogram with custom $500 buckets}
+\NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{14}\NormalTok{, }\DecValTok{8}\NormalTok{))}
+
+\CommentTok{\# Create custom bins every $500, with $10,000+ as final bucket}
+\NormalTok{min\_balance }\OperatorTok{=} \BuiltInTok{min}\NormalTok{(final\_balances)}
+\NormalTok{max\_balance }\OperatorTok{=} \BuiltInTok{max}\NormalTok{(final\_balances)}
+\NormalTok{custom\_bins }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(}\BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{10001}\NormalTok{, }\DecValTok{500}\NormalTok{))  }\CommentTok{\# $0, $500, $1000, $1500, ..., $10000}
+\ControlFlowTok{if}\NormalTok{ max\_balance }\OperatorTok{\textgreater{}} \DecValTok{10000}\NormalTok{:}
+\NormalTok{    custom\_bins.append(max\_balance)  }\CommentTok{\# Add final bin for anything over $10,000}
+
+\NormalTok{n, bins, patches }\OperatorTok{=}\NormalTok{ ax.hist(final\_balances, bins}\OperatorTok{=}\NormalTok{custom\_bins, color}\OperatorTok{=}\StringTok{\textquotesingle{}lightblue\textquotesingle{}}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.7}\NormalTok{, edgecolor}\OperatorTok{=}\StringTok{\textquotesingle{}black\textquotesingle{}}\NormalTok{, linewidth}\OperatorTok{=}\FloatTok{0.5}\NormalTok{)}
+
+\CommentTok{\# Color bars based on whether they\textquotesingle{}re above or below $1,000}
+\ControlFlowTok{for}\NormalTok{ i, (patch, bin\_left, bin\_right) }\KeywordTok{in} \BuiltInTok{enumerate}\NormalTok{(}\BuiltInTok{zip}\NormalTok{(patches, bins[:}\OperatorTok{{-}}\DecValTok{1}\NormalTok{], bins[}\DecValTok{1}\NormalTok{:])):}
+    \ControlFlowTok{if}\NormalTok{ bin\_right }\OperatorTok{\textless{}=}\NormalTok{ initial\_balance:}
+\NormalTok{        patch.set\_facecolor(}\StringTok{\textquotesingle{}lightcoral\textquotesingle{}}\NormalTok{)  }\CommentTok{\# Red for below $1,000}
+    \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{        patch.set\_facecolor(}\StringTok{\textquotesingle{}lightgreen\textquotesingle{}}\NormalTok{)  }\CommentTok{\# Green for above $1,000}
+
+\CommentTok{\# Add vertical line at $1,000}
+\NormalTok{ax.axvline(initial\_balance, color}\OperatorTok{=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{, linestyle}\OperatorTok{=}\StringTok{\textquotesingle{}{-}{-}\textquotesingle{}}\NormalTok{, linewidth}\OperatorTok{=}\DecValTok{3}\NormalTok{, label}\OperatorTok{=}\SpecialStringTok{f\textquotesingle{}$1,000 Threshold\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# Add probability text boxes}
+\NormalTok{prob\_above }\OperatorTok{=}\NormalTok{ np.mean(np.array(final\_balances) }\OperatorTok{\textgreater{}}\NormalTok{ initial\_balance)}
+\NormalTok{prob\_below }\OperatorTok{=} \DecValTok{1} \OperatorTok{{-}}\NormalTok{ prob\_above}
+
+\NormalTok{ax.text(}\FloatTok{0.02}\NormalTok{, }\FloatTok{0.98}\NormalTok{, }\SpecialStringTok{f\textquotesingle{}Above $1,000: }\SpecialCharTok{\{}\NormalTok{prob\_above}\SpecialCharTok{:.1\%\}}\SpecialStringTok{\textquotesingle{}}\NormalTok{, transform}\OperatorTok{=}\NormalTok{ax.transAxes, }
+\NormalTok{        fontsize}\OperatorTok{=}\DecValTok{12}\NormalTok{, fontweight}\OperatorTok{=}\StringTok{\textquotesingle{}bold\textquotesingle{}}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}green\textquotesingle{}}\NormalTok{,}
+\NormalTok{        bbox}\OperatorTok{=}\BuiltInTok{dict}\NormalTok{(boxstyle}\OperatorTok{=}\StringTok{\textquotesingle{}round,pad=0.5\textquotesingle{}}\NormalTok{, facecolor}\OperatorTok{=}\StringTok{\textquotesingle{}lightgreen\textquotesingle{}}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.8}\NormalTok{),}
+\NormalTok{        verticalalignment}\OperatorTok{=}\StringTok{\textquotesingle{}top\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{ax.text(}\FloatTok{0.02}\NormalTok{, }\FloatTok{0.88}\NormalTok{, }\SpecialStringTok{f\textquotesingle{}Below $1,000: }\SpecialCharTok{\{}\NormalTok{prob\_below}\SpecialCharTok{:.1\%\}}\SpecialStringTok{\textquotesingle{}}\NormalTok{, transform}\OperatorTok{=}\NormalTok{ax.transAxes, }
+\NormalTok{        fontsize}\OperatorTok{=}\DecValTok{12}\NormalTok{, fontweight}\OperatorTok{=}\StringTok{\textquotesingle{}bold\textquotesingle{}}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{,}
+\NormalTok{        bbox}\OperatorTok{=}\BuiltInTok{dict}\NormalTok{(boxstyle}\OperatorTok{=}\StringTok{\textquotesingle{}round,pad=0.5\textquotesingle{}}\NormalTok{, facecolor}\OperatorTok{=}\StringTok{\textquotesingle{}lightcoral\textquotesingle{}}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.8}\NormalTok{),}
+\NormalTok{        verticalalignment}\OperatorTok{=}\StringTok{\textquotesingle{}top\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{ax.set\_title(}\StringTok{\textquotesingle{}Distribution of Final Account Balances at Age 55}\CharTok{\textbackslash{}n}\StringTok{100 Simulations {-} $500 Buckets (10K+ Grouped)\textquotesingle{}}\NormalTok{, }
+\NormalTok{             fontsize}\OperatorTok{=}\DecValTok{14}\NormalTok{, fontweight}\OperatorTok{=}\StringTok{\textquotesingle{}bold\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax.set\_xlabel(}\StringTok{\textquotesingle{}Final Balance ($)\textquotesingle{}}\NormalTok{, fontsize}\OperatorTok{=}\DecValTok{12}\NormalTok{)}
+\NormalTok{ax.set\_ylabel(}\StringTok{\textquotesingle{}Frequency\textquotesingle{}}\NormalTok{, fontsize}\OperatorTok{=}\DecValTok{12}\NormalTok{)}
+\NormalTok{ax.legend()}
+\NormalTok{ax.grid(}\VariableTok{True}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.3}\NormalTok{)}
+
+\CommentTok{\# Format x{-}axis as currency with $500 increments}
+\NormalTok{ax.xaxis.set\_major\_formatter(plt.FuncFormatter(}\KeywordTok{lambda}\NormalTok{ x, \_: }\SpecialStringTok{f\textquotesingle{}$}\SpecialCharTok{\{}\NormalTok{x}\SpecialCharTok{:,.0f\}}\SpecialStringTok{\textquotesingle{}}\NormalTok{))}
+\NormalTok{ax.tick\_params(axis}\OperatorTok{=}\StringTok{\textquotesingle{}x\textquotesingle{}}\NormalTok{, rotation}\OperatorTok{=}\DecValTok{45}\NormalTok{)}
+
+\CommentTok{\# Set x{-}axis limits to focus on the main distribution}
+\NormalTok{ax.set\_xlim(}\DecValTok{0}\NormalTok{, }\DecValTok{10500}\NormalTok{)}
+
+\NormalTok{plt.tight\_layout()}
+\NormalTok{plt.show()}
+
+\CommentTok{\# Summary statistics}
+\NormalTok{mean\_balance }\OperatorTok{=}\NormalTok{ np.mean(final\_balances)}
+\NormalTok{median\_balance }\OperatorTok{=}\NormalTok{ np.median(final\_balances)}
+\NormalTok{prob\_above\_initial }\OperatorTok{=}\NormalTok{ np.mean(np.array(final\_balances) }\OperatorTok{\textgreater{}}\NormalTok{ initial\_balance)}
+\NormalTok{max\_balance }\OperatorTok{=}\NormalTok{ np.}\BuiltInTok{max}\NormalTok{(final\_balances)}
+\NormalTok{min\_balance }\OperatorTok{=}\NormalTok{ np.}\BuiltInTok{min}\NormalTok{(final\_balances)}
+
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Summary Statistics (100 simulations):"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Mean final balance: $}\SpecialCharTok{\{}\NormalTok{mean\_balance}\SpecialCharTok{:,.2f\}}\SpecialStringTok{"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Median final balance: $}\SpecialCharTok{\{}\NormalTok{median\_balance}\SpecialCharTok{:,.2f\}}\SpecialStringTok{"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Probability above $1,000: }\SpecialCharTok{\{}\NormalTok{prob\_above\_initial}\SpecialCharTok{:.3f\}}\SpecialStringTok{"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Maximum balance: $}\SpecialCharTok{\{}\NormalTok{max\_balance}\SpecialCharTok{:,.2f\}}\SpecialStringTok{"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Minimum balance: $}\SpecialCharTok{\{}\NormalTok{min\_balance}\SpecialCharTok{:,.2f\}}\SpecialStringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/q4-multiple-simulations-output-1.pdf}}
+
+\begin{verbatim}
+Summary Statistics (100 simulations):
+Mean final balance: $1,718.87
+Median final balance: $205.89
+Probability above $1,000: 0.300
+Maximum balance: $50,266.39
+Minimum balance: $0.13
+\end{verbatim}
+
 \subsubsection{Questions to Answer for 95\% Grade on
 Challenge}\label{questions-to-answer-for-95-grade-on-challenge}
 
@@ -403,6 +642,74 @@ Challenge}\label{questions-to-answer-for-95-grade-on-challenge}
   what is the probability that your account balance will be greater than
   \$1,000 at age 55?
 \end{enumerate}
+
+\subsection{Answer: Based on the 100 simulations from Question 4, the
+probability of ending above \$1,000 at age 55 is 30\%. This means that
+the probability you end up with less than \$1,000 will be 70\% which is
+not a great outcome for the
+player.}\label{answer-based-on-the-100-simulations-from-question-4-the-probability-of-ending-above-1000-at-age-55-is-30.-this-means-that-the-probability-you-end-up-with-less-than-1000-will-be-70-which-is-not-a-great-outcome-for-the-player.}
+
+\phantomsection\label{q5-probability-analysis}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Use the same final\_balances from Question 4 simulations}
+\CommentTok{\# (In practice, you\textquotesingle{}d use the results from the previous simulation)}
+
+\CommentTok{\# Re{-}run the same simulation for consistency}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+
+\CommentTok{\# Reproducibility (same seed as Question 4)}
+\NormalTok{np.random.seed(}\DecValTok{456}\NormalTok{)}
+
+\CommentTok{\# Parameters (same as Question 4)}
+\NormalTok{initial\_balance }\OperatorTok{=} \FloatTok{1000.0}
+\NormalTok{n\_years }\OperatorTok{=} \DecValTok{30}
+\NormalTok{n\_sims }\OperatorTok{=} \DecValTok{100}
+\NormalTok{p\_heads }\OperatorTok{=} \FloatTok{0.5}
+
+\CommentTok{\# Function to simulate one path (same as Question 4)}
+\KeywordTok{def}\NormalTok{ simulate\_one\_path(initial, years):}
+\NormalTok{    balance }\OperatorTok{=}\NormalTok{ initial}
+    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(years):}
+\NormalTok{        flip }\OperatorTok{=}\NormalTok{ np.random.binomial(}\DecValTok{1}\NormalTok{, p\_heads)}
+        \ControlFlowTok{if}\NormalTok{ flip }\OperatorTok{==} \DecValTok{1}\NormalTok{:}
+\NormalTok{            balance }\OperatorTok{*=} \FloatTok{1.5}  \CommentTok{\# +50\% on heads}
+        \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{            balance }\OperatorTok{*=} \FloatTok{0.6}   \CommentTok{\# {-}40\% on tails}
+    \ControlFlowTok{return}\NormalTok{ balance}
+
+\CommentTok{\# Run 100 simulations (same as Question 4)}
+\NormalTok{final\_balances }\OperatorTok{=}\NormalTok{ [simulate\_one\_path(initial\_balance, n\_years) }\ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(n\_sims)]}
+
+\CommentTok{\# Calculate probability of ending above $1,000}
+\NormalTok{prob\_above\_1000 }\OperatorTok{=}\NormalTok{ np.mean(np.array(final\_balances) }\OperatorTok{\textgreater{}} \DecValTok{1000}\NormalTok{)}
+\NormalTok{prob\_below\_1000 }\OperatorTok{=} \DecValTok{1} \OperatorTok{{-}}\NormalTok{ prob\_above\_1000}
+
+\CommentTok{\# Count actual results}
+\NormalTok{count\_above\_1000 }\OperatorTok{=}\NormalTok{ np.}\BuiltInTok{sum}\NormalTok{(np.array(final\_balances) }\OperatorTok{\textgreater{}} \DecValTok{1000}\NormalTok{)}
+\NormalTok{count\_below\_1000 }\OperatorTok{=}\NormalTok{ n\_sims }\OperatorTok{{-}}\NormalTok{ count\_above\_1000}
+
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Results from 100 simulations:"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Simulations ending above $1,000: }\SpecialCharTok{\{}\NormalTok{count\_above\_1000}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Simulations ending below $1,000: }\SpecialCharTok{\{}\NormalTok{count\_below\_1000}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f""}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Probability of ending above $1,000: }\SpecialCharTok{\{}\NormalTok{prob\_above\_1000}\SpecialCharTok{:.3f\}}\SpecialStringTok{ (}\SpecialCharTok{\{}\NormalTok{prob\_above\_1000}\SpecialCharTok{:.1\%\}}\SpecialStringTok{)"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Probability of ending below $1,000: }\SpecialCharTok{\{}\NormalTok{prob\_below\_1000}\SpecialCharTok{:.3f\}}\SpecialStringTok{ (}\SpecialCharTok{\{}\NormalTok{prob\_below\_1000}\SpecialCharTok{:.1\%\}}\SpecialStringTok{)"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f""}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Answer: The probability that your account balance will be greater than $1,000 at age 55 is }\SpecialCharTok{\{}\NormalTok{prob\_above\_1000}\SpecialCharTok{:.1\%\}}\SpecialStringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Results from 100 simulations:
+Simulations ending above $1,000: 30
+Simulations ending below $1,000: 70
+
+Probability of ending above $1,000: 0.300 (30.0%)
+Probability of ending below $1,000: 0.700 (70.0%)
+
+Answer: The probability that your account balance will be greater than $1,000 at age 55 is 30.0%
+\end{verbatim}
 
 \subsubsection{Questions to Answer for 100\% Grade on
 Challenge}\label{questions-to-answer-for-100-grade-on-challenge}
@@ -419,6 +726,107 @@ Challenge}\label{questions-to-answer-for-100-grade-on-challenge}
   age 55? Is this probability higher or lower than the probability in
   the original game?
 \end{enumerate}
+
+\subsection{Answer: Below are 100 simulations of the modified game
+strategy (betting 50\% of balance each round) compared to the original
+game. The modified strategy shows different dynamics due to the fixed
+betting
+percentage.}\label{answer-below-are-100-simulations-of-the-modified-game-strategy-betting-50-of-balance-each-round-compared-to-the-original-game.-the-modified-strategy-shows-different-dynamics-due-to-the-fixed-betting-percentage.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+
+\CommentTok{\# Reproducibility}
+\NormalTok{np.random.seed(}\DecValTok{789}\NormalTok{)}
+
+\CommentTok{\# Parameters}
+\NormalTok{initial\_balance }\OperatorTok{=} \FloatTok{1000.0}
+\NormalTok{n\_years }\OperatorTok{=} \DecValTok{30}
+\NormalTok{n\_sims }\OperatorTok{=} \DecValTok{100}
+\NormalTok{p\_heads }\OperatorTok{=} \FloatTok{0.5}
+
+\CommentTok{\# Original game function (from Questions 4{-}5)}
+\KeywordTok{def}\NormalTok{ simulate\_original\_game(initial, years):}
+\NormalTok{    balance }\OperatorTok{=}\NormalTok{ initial}
+    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(years):}
+\NormalTok{        flip }\OperatorTok{=}\NormalTok{ np.random.binomial(}\DecValTok{1}\NormalTok{, p\_heads)}
+        \ControlFlowTok{if}\NormalTok{ flip }\OperatorTok{==} \DecValTok{1}\NormalTok{:}
+\NormalTok{            balance }\OperatorTok{*=} \FloatTok{1.5}  \CommentTok{\# +50\% on heads}
+        \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{            balance }\OperatorTok{*=} \FloatTok{0.6}   \CommentTok{\# {-}40\% on tails}
+    \ControlFlowTok{return}\NormalTok{ balance}
+
+\CommentTok{\# Modified game function (betting 50\% of balance each round)}
+\KeywordTok{def}\NormalTok{ simulate\_modified\_game(initial, years):}
+\NormalTok{    balance }\OperatorTok{=}\NormalTok{ initial}
+    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(years):}
+\NormalTok{        flip }\OperatorTok{=}\NormalTok{ np.random.binomial(}\DecValTok{1}\NormalTok{, p\_heads)}
+\NormalTok{        bet\_amount }\OperatorTok{=}\NormalTok{ balance }\OperatorTok{*} \FloatTok{0.5}  \CommentTok{\# Bet exactly 50\% of current balance}
+        
+        \ControlFlowTok{if}\NormalTok{ flip }\OperatorTok{==} \DecValTok{1}\NormalTok{:}
+            \CommentTok{\# Win: bet increases by 50\%, so total balance = remaining 50\% + bet*1.5}
+\NormalTok{            balance }\OperatorTok{=}\NormalTok{ (balance }\OperatorTok{{-}}\NormalTok{ bet\_amount) }\OperatorTok{+}\NormalTok{ (bet\_amount }\OperatorTok{*} \FloatTok{1.5}\NormalTok{)}
+        \ControlFlowTok{else}\NormalTok{:}
+            \CommentTok{\# Lose: bet decreases by 40\%, so total balance = remaining 50\% + bet*0.6}
+\NormalTok{            balance }\OperatorTok{=}\NormalTok{ (balance }\OperatorTok{{-}}\NormalTok{ bet\_amount) }\OperatorTok{+}\NormalTok{ (bet\_amount }\OperatorTok{*} \FloatTok{0.6}\NormalTok{)}
+    \ControlFlowTok{return}\NormalTok{ balance}
+
+\CommentTok{\# Run simulations for both strategies}
+\NormalTok{original\_balances }\OperatorTok{=}\NormalTok{ [simulate\_original\_game(initial\_balance, n\_years) }\ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(n\_sims)]}
+\NormalTok{modified\_balances }\OperatorTok{=}\NormalTok{ [simulate\_modified\_game(initial\_balance, n\_years) }\ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(n\_sims)]}
+
+\CommentTok{\# Calculate probabilities}
+\NormalTok{prob\_original\_above\_10k }\OperatorTok{=}\NormalTok{ np.mean(np.array(original\_balances) }\OperatorTok{\textgreater{}} \DecValTok{10000}\NormalTok{)}
+\NormalTok{prob\_modified\_above\_10k }\OperatorTok{=}\NormalTok{ np.mean(np.array(modified\_balances) }\OperatorTok{\textgreater{}} \DecValTok{10000}\NormalTok{)}
+
+\CommentTok{\# Create comparison histogram}
+\NormalTok{fig, (ax1, ax2) }\OperatorTok{=}\NormalTok{ plt.subplots(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{16}\NormalTok{, }\DecValTok{7}\NormalTok{))}
+
+\CommentTok{\# Original game histogram}
+\NormalTok{ax1.hist(original\_balances, bins}\OperatorTok{=}\DecValTok{20}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}lightblue\textquotesingle{}}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.7}\NormalTok{, edgecolor}\OperatorTok{=}\StringTok{\textquotesingle{}black\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax1.axvline(}\DecValTok{10000}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{, linestyle}\OperatorTok{=}\StringTok{\textquotesingle{}{-}{-}\textquotesingle{}}\NormalTok{, linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{, label}\OperatorTok{=}\StringTok{\textquotesingle{}$10,000 Threshold\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax1.set\_title(}\StringTok{\textquotesingle{}Original Game Strategy}\CharTok{\textbackslash{}n}\StringTok{(Full Balance Multiplicative)\textquotesingle{}}\NormalTok{, fontsize}\OperatorTok{=}\DecValTok{12}\NormalTok{, fontweight}\OperatorTok{=}\StringTok{\textquotesingle{}bold\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax1.set\_xlabel(}\StringTok{\textquotesingle{}Final Balance ($)\textquotesingle{}}\NormalTok{, fontsize}\OperatorTok{=}\DecValTok{11}\NormalTok{)}
+\NormalTok{ax1.set\_ylabel(}\StringTok{\textquotesingle{}Frequency\textquotesingle{}}\NormalTok{, fontsize}\OperatorTok{=}\DecValTok{11}\NormalTok{)}
+\NormalTok{ax1.legend()}
+\NormalTok{ax1.grid(}\VariableTok{True}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.3}\NormalTok{)}
+\NormalTok{ax1.xaxis.set\_major\_formatter(plt.FuncFormatter(}\KeywordTok{lambda}\NormalTok{ x, \_: }\SpecialStringTok{f\textquotesingle{}$}\SpecialCharTok{\{}\NormalTok{x}\SpecialCharTok{:,.0f\}}\SpecialStringTok{\textquotesingle{}}\NormalTok{))}
+
+\CommentTok{\# Modified game histogram}
+\NormalTok{ax2.hist(modified\_balances, bins}\OperatorTok{=}\DecValTok{20}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}lightgreen\textquotesingle{}}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.7}\NormalTok{, edgecolor}\OperatorTok{=}\StringTok{\textquotesingle{}black\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax2.axvline(}\DecValTok{10000}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{, linestyle}\OperatorTok{=}\StringTok{\textquotesingle{}{-}{-}\textquotesingle{}}\NormalTok{, linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{, label}\OperatorTok{=}\StringTok{\textquotesingle{}$10,000 Threshold\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax2.set\_title(}\StringTok{\textquotesingle{}Modified Game Strategy}\CharTok{\textbackslash{}n}\StringTok{(Betting 50}\SpecialCharTok{\% o}\StringTok{f Balance)\textquotesingle{}}\NormalTok{, fontsize}\OperatorTok{=}\DecValTok{12}\NormalTok{, fontweight}\OperatorTok{=}\StringTok{\textquotesingle{}bold\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax2.set\_xlabel(}\StringTok{\textquotesingle{}Final Balance ($)\textquotesingle{}}\NormalTok{, fontsize}\OperatorTok{=}\DecValTok{11}\NormalTok{)}
+\NormalTok{ax2.set\_ylabel(}\StringTok{\textquotesingle{}Frequency\textquotesingle{}}\NormalTok{, fontsize}\OperatorTok{=}\DecValTok{11}\NormalTok{)}
+\NormalTok{ax2.legend()}
+\NormalTok{ax2.grid(}\VariableTok{True}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.3}\NormalTok{)}
+\NormalTok{ax2.xaxis.set\_major\_formatter(plt.FuncFormatter(}\KeywordTok{lambda}\NormalTok{ x, \_: }\SpecialStringTok{f\textquotesingle{}$}\SpecialCharTok{\{}\NormalTok{x}\SpecialCharTok{:,.0f\}}\SpecialStringTok{\textquotesingle{}}\NormalTok{))}
+
+\NormalTok{plt.tight\_layout()}
+\NormalTok{plt.show()}
+
+\CommentTok{\# Print results}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Strategy Comparison Results:"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Original Game {-} Probability above $10,000: }\SpecialCharTok{\{}\NormalTok{prob\_original\_above\_10k}\SpecialCharTok{:.3f\}}\SpecialStringTok{ (}\SpecialCharTok{\{}\NormalTok{prob\_original\_above\_10k}\SpecialCharTok{:.1\%\}}\SpecialStringTok{)"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Modified Game {-} Probability above $10,000: }\SpecialCharTok{\{}\NormalTok{prob\_modified\_above\_10k}\SpecialCharTok{:.3f\}}\SpecialStringTok{ (}\SpecialCharTok{\{}\NormalTok{prob\_modified\_above\_10k}\SpecialCharTok{:.1\%\}}\SpecialStringTok{)"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f""}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Answer: The probability of ending above $10,000 is }\SpecialCharTok{\{}\NormalTok{prob\_modified\_above\_10k}\SpecialCharTok{:.1\%\}}\SpecialStringTok{ for the modified game."}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"This is }\SpecialCharTok{\{}\StringTok{\textquotesingle{}HIGHER\textquotesingle{}} \ControlFlowTok{if}\NormalTok{ prob\_modified\_above\_10k }\OperatorTok{\textgreater{}}\NormalTok{ prob\_original\_above\_10k }\ControlFlowTok{else} \StringTok{\textquotesingle{}LOWER\textquotesingle{}}\SpecialCharTok{\}}\SpecialStringTok{ than the original game (}\SpecialCharTok{\{}\NormalTok{prob\_original\_above\_10k}\SpecialCharTok{:.1\%\}}\SpecialStringTok{)."}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/q6-strategy-comparison-output-1.pdf}}
+
+\begin{verbatim}
+Strategy Comparison Results:
+Original Game - Probability above $10,000: 0.030 (3.0%)
+Modified Game - Probability above $10,000: 0.010 (1.0%)
+
+Answer: The probability of ending above $10,000 is 1.0% for the modified game.
+This is LOWER than the original game (3.0%).
+\end{verbatim}
 
 \subsubsection{Modified Game Strategy}\label{modified-game-strategy}
 
@@ -580,7 +988,7 @@ Preferences}\label{visualization-preferences}
 
 \subsubsection{Getting Started Tips}\label{getting-started-tips}
 
-\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, leftrule=.75mm, colback=white, colframe=quarto-callout-note-color-frame, breakable, rightrule=.15mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{🎯 Navy SEALs Motto}, bottomrule=.15mm, opacityback=0, bottomtitle=1mm, left=2mm, toptitle=1mm, arc=.35mm, opacitybacktitle=0.6]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, leftrule=.75mm, toptitle=1mm, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{🎯 Navy SEALs Motto}, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, coltitle=black, colback=white, breakable, titlerule=0mm, colframe=quarto-callout-note-color-frame, toprule=.15mm, bottomrule=.15mm, left=2mm, opacitybacktitle=0.6]
 
 \begin{quote}
 ``Slow is Smooth and Smooth is Fast''
@@ -615,7 +1023,7 @@ challenge will only lead to errors and confusion.}
   when intuition will steer you wrong!} 🎲
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colbacktitle=quarto-callout-warning-color!10!white, coltitle=black, leftrule=.75mm, colback=white, colframe=quarto-callout-warning-color-frame, breakable, rightrule=.15mm, toprule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{💾 Important: Save Your Work Frequently!}, bottomrule=.15mm, opacityback=0, bottomtitle=1mm, left=2mm, toptitle=1mm, arc=.35mm, opacitybacktitle=0.6]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, leftrule=.75mm, toptitle=1mm, bottomtitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{💾 Important: Save Your Work Frequently!}, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, arc=.35mm, coltitle=black, colback=white, breakable, titlerule=0mm, colframe=quarto-callout-warning-color-frame, toprule=.15mm, bottomrule=.15mm, left=2mm, opacitybacktitle=0.6]
 
 \textbf{Before you start coding:} Make sure to commit your work often
 using the Source Control panel in Cursor (Ctrl+Shift+G or Cmd+Shift+G).
@@ -669,70 +1077,14 @@ mechanics:
 \paragraph{Generative DAG Model for the Simple Coin Flip
 Game}\label{generative-dag-model-for-the-simple-coin-flip-game}
 
-\begin{figure}
-
-\centering{
-
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-simple-coin-dag-3.pdf}}
-
-}
-
-\caption{\label{fig-simple-coin-dag}Generative DAG model for the simple
-coin flip game showing the relationship between coin flip outcome and
-winnings}
-
-\end{figure}%
-
 \textbf{Key Difference from Investment Game:} Unlike the investment game
-DAG (Figure~\ref{fig-investment-dag}) which models wealth evolution over
+DAG (\textbf{?@fig-investment-dag}) which models wealth evolution over
 multiple time periods with multiplicative changes, this simple coin flip
 DAG represents a single-period game with additive winnings. The
 investment game shows how wealth compounds over time
 (\(W_t = 1.5 \times W_{t-1}\) or \(W_t = 0.6 \times W_{t-1}\)), while
 this simple game shows fixed winnings (\(W = +100\) or \(W = -100\))
 based on a single coin flip outcome.
-
-\subsubsection{R}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{suppressPackageStartupMessages}\NormalTok{(}\FunctionTok{library}\NormalTok{(tidyverse))}
-
-\CommentTok{\# Set seed for reproducibility}
-\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
-
-\CommentTok{\# Number of simulations}
-\NormalTok{n\_sims }\OtherTok{\textless{}{-}} \DecValTok{10}
-
-\CommentTok{\# Create simulation data}
-\NormalTok{sim\_data }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
-  \AttributeTok{sim\_num =} \DecValTok{1}\SpecialCharTok{:}\NormalTok{n\_sims,}
-  \AttributeTok{coin\_flip =} \FunctionTok{rbinom}\NormalTok{(}\AttributeTok{n =}\NormalTok{ n\_sims, }\AttributeTok{size =} \DecValTok{1}\NormalTok{, }\AttributeTok{prob =} \FloatTok{0.5}\NormalTok{)}
-\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{mutate}\NormalTok{(}
-    \AttributeTok{winnings =} \FunctionTok{if\_else}\NormalTok{(coin\_flip }\SpecialCharTok{==} \DecValTok{1}\NormalTok{, }\DecValTok{100}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{100}\NormalTok{)}
-\NormalTok{  )}
-
-\CommentTok{\# Display results}
-\NormalTok{sim\_data}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-# A tibble: 10 x 3
-   sim_num coin_flip winnings
-     <int>     <int>    <dbl>
- 1       1         0     -100
- 2       2         1      100
- 3       3         0     -100
- 4       4         1      100
- 5       5         1      100
- 6       6         0     -100
- 7       7         1      100
- 8       8         1      100
- 9       9         1      100
-10      10         0     -100
-\end{verbatim}
 
 \subsubsection{Python}
 
@@ -765,19 +1117,27 @@ based on a single coin flip outcome.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-   sim_num  coin_flip  winnings
-0        1          1       100
-1        2          0      -100
-2        3          0      -100
-3        4          1       100
-4        5          1       100
-5        6          0      -100
-6        7          1       100
-7        8          1       100
-8        9          0      -100
-9       10          0      -100
-\end{verbatim}
+\phantomsection\label{simple-sim-python}
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+& sim\_num & coin\_flip & winnings \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1 & 1 & 100 \\
+1 & 2 & 0 & -100 \\
+2 & 3 & 0 & -100 \\
+3 & 4 & 1 & 100 \\
+4 & 5 & 1 & 100 \\
+5 & 6 & 0 & -100 \\
+6 & 7 & 1 & 100 \\
+7 & 8 & 1 & 100 \\
+8 & 9 & 0 & -100 \\
+9 & 10 & 0 & -100 \\
+\end{longtable}
+
+Python simulation of coin flip game
 
 \subsubsection{2. Time-Series Simulation: Account Balance Over
 Time}\label{time-series-simulation-account-balance-over-time}
@@ -787,122 +1147,14 @@ Now let's simulate how an account balance changes over multiple periods:
 \paragraph{Generative DAG Model for Time-Series Account
 Balance}\label{generative-dag-model-for-time-series-account-balance}
 
-\begin{figure}
-
-\centering{
-
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-timeseries-dag-1.pdf}}
-
-}
-
-\caption{\label{fig-timeseries-dag}Generative DAG model for time-series
-account balance simulation showing how balance evolves sequentially over
-multiple periods}
-
-\end{figure}%
-
 \textbf{Key Difference from Simple Coin Flip Game:} Unlike the simple
-coin flip DAG (Figure~\ref{fig-simple-coin-dag}) which represents a
+coin flip DAG (\textbf{?@fig-simple-coin-dag}) which represents a
 single-period game, this time-series DAG models sequential balance
 evolution over multiple periods. Each period's balance depends on the
 previous period's balance plus the current coin flip outcome. The simple
 game shows independent winnings per flip, while this model shows
 cumulative balance changes where \(B_t = B_{t-1} + \Delta_t\) and
 \(\Delta_t = +100\) or \(-100\) based on the coin flip.
-
-\subsubsection{R}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{suppressPackageStartupMessages}\NormalTok{(}\FunctionTok{library}\NormalTok{(tidyverse))}
-\FunctionTok{suppressPackageStartupMessages}\NormalTok{(}\FunctionTok{library}\NormalTok{(ggplot2))}
-
-\CommentTok{\# Set seed for reproducibility}
-\FunctionTok{set.seed}\NormalTok{(}\DecValTok{456}\NormalTok{)}
-
-\CommentTok{\# Parameters}
-\NormalTok{initial\_balance }\OtherTok{\textless{}{-}} \DecValTok{1000}
-\NormalTok{n\_periods }\OtherTok{\textless{}{-}} \DecValTok{10}
-\NormalTok{n\_sims }\OtherTok{\textless{}{-}} \DecValTok{1}  \CommentTok{\# Start with one simulation}
-
-\CommentTok{\# Simulate one path}
-\NormalTok{simulate\_path }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(initial, periods) \{}
-\NormalTok{  balance }\OtherTok{\textless{}{-}}\NormalTok{ initial}
-\NormalTok{  path }\OtherTok{\textless{}{-}} \FunctionTok{numeric}\NormalTok{(periods }\SpecialCharTok{+} \DecValTok{1}\NormalTok{)}
-\NormalTok{  path[}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ initial}
-  
-  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{periods) \{}
-\NormalTok{    coin\_flip }\OtherTok{\textless{}{-}} \FunctionTok{rbinom}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\FloatTok{0.5}\NormalTok{)}
-    \ControlFlowTok{if}\NormalTok{ (coin\_flip }\SpecialCharTok{==} \DecValTok{1}\NormalTok{) \{}
-\NormalTok{      balance }\OtherTok{\textless{}{-}}\NormalTok{ balance }\SpecialCharTok{+} \DecValTok{100}
-\NormalTok{    \} }\ControlFlowTok{else}\NormalTok{ \{}
-\NormalTok{      balance }\OtherTok{\textless{}{-}}\NormalTok{ balance }\SpecialCharTok{{-}} \DecValTok{100}
-\NormalTok{    \}}
-\NormalTok{    path[i }\SpecialCharTok{+} \DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ balance}
-\NormalTok{  \}}
-  
-  \FunctionTok{return}\NormalTok{(path)}
-\NormalTok{\}}
-
-\CommentTok{\# Run simulation}
-\NormalTok{time\_series\_data }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
-  \AttributeTok{period =} \DecValTok{0}\SpecialCharTok{:}\NormalTok{n\_periods,}
-  \AttributeTok{balance =} \FunctionTok{simulate\_path}\NormalTok{(initial\_balance, n\_periods)}
-\NormalTok{)}
-
-\CommentTok{\# Create time series plot}
-\FunctionTok{ggplot}\NormalTok{(time\_series\_data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ period, }\AttributeTok{y =}\NormalTok{ balance)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{color =} \StringTok{"cadetblue"}\NormalTok{, }\AttributeTok{linewidth =} \FloatTok{1.2}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"darkblue"}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}
-    \AttributeTok{title =} \StringTok{"Account Balance Over Time"}\NormalTok{,}
-    \AttributeTok{subtitle =} \StringTok{"Single Simulation Path"}\NormalTok{,}
-    \AttributeTok{x =} \StringTok{"Period"}\NormalTok{,}
-    \AttributeTok{y =} \StringTok{"Account Balance ($)"}\NormalTok{,}
-    \AttributeTok{caption =} \StringTok{"Heads: +$100$, Tails: {-}$100$"}
-\NormalTok{  ) }\SpecialCharTok{+}
-  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{dollar\_format}\NormalTok{()) }\SpecialCharTok{+}
-  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{theme}\NormalTok{(}
-    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{14}\NormalTok{, }\AttributeTok{face =} \StringTok{"bold"}\NormalTok{),}
-    \AttributeTok{plot.subtitle =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{12}\NormalTok{, }\AttributeTok{color =} \StringTok{"gray50"}\NormalTok{)}
-\NormalTok{  )}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}[H]
-
-{\centering \pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/timeseries-sim-r-3.pdf}}
-
-}
-
-\caption{R time-series simulation of account balance}
-
-\end{figure}%
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Show the data}
-\NormalTok{time\_series\_data}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-# A tibble: 11 x 2
-   period balance
-    <int>   <dbl>
- 1      0    1000
- 2      1     900
- 3      2     800
- 4      3     900
- 5      4    1000
- 6      5    1100
- 7      6    1000
- 8      7     900
- 9      8     800
-10      9     700
-11     10     600
-\end{verbatim}
 
 \subsubsection{Python}
 
@@ -951,26 +1203,22 @@ cumulative balance changes where \(B_t = B_{t-1} + \Delta_t\) and
 \NormalTok{ax.set\_ylabel(}\StringTok{\textquotesingle{}Account Balance ($)\textquotesingle{}}\NormalTok{, fontsize}\OperatorTok{=}\DecValTok{12}\NormalTok{)}
 \NormalTok{ax.grid(}\VariableTok{True}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.3}\NormalTok{)}
 \NormalTok{ax.set\_ylim(}\DecValTok{0}\NormalTok{, }\BuiltInTok{max}\NormalTok{(time\_series\_data[}\StringTok{\textquotesingle{}balance\textquotesingle{}}\NormalTok{]) }\OperatorTok{*} \FloatTok{1.1}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-(0.0, 1540.0000000000002)
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \CommentTok{\# Format y{-}axis as currency}
 \NormalTok{ax.yaxis.set\_major\_formatter(plt.FuncFormatter(}\KeywordTok{lambda}\NormalTok{ x, p: }\SpecialStringTok{f\textquotesingle{}$}\SpecialCharTok{\{}\NormalTok{x}\SpecialCharTok{:,.0f\}}\SpecialStringTok{\textquotesingle{}}\NormalTok{))}
 
 \NormalTok{plt.tight\_layout()}
 \NormalTok{plt.show()}
+
+\CommentTok{\# Show the data}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Time Series Data:"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(time\_series\_data)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{figure}[H]
 
-{\centering \pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/timeseries-sim-python-1.pdf}}
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/timeseries-sim-python-output-1.pdf}}
 
 }
 
@@ -978,24 +1226,8 @@ cumulative balance changes where \(B_t = B_{t-1} + \Delta_t\) and
 
 \end{figure}%
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Show the data}
-\BuiltInTok{print}\NormalTok{(}\StringTok{"Time Series Data:"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{verbatim}
 Time Series Data:
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{print}\NormalTok{(time\_series\_data)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
     period  balance
 0        0     1000
 1        1      900
@@ -1015,105 +1247,6 @@ Distribution}\label{probability-distribution-final-balance-distribution}
 
 Let's see what the distribution of final balances looks like across many
 simulations:
-
-\subsubsection{R}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{suppressPackageStartupMessages}\NormalTok{(}\FunctionTok{library}\NormalTok{(tidyverse))}
-\FunctionTok{suppressPackageStartupMessages}\NormalTok{(}\FunctionTok{library}\NormalTok{(ggplot2))}
-
-\CommentTok{\# Set seed for reproducibility}
-\FunctionTok{set.seed}\NormalTok{(}\DecValTok{789}\NormalTok{)}
-
-\CommentTok{\# Parameters}
-\NormalTok{initial\_balance }\OtherTok{\textless{}{-}} \DecValTok{1000}
-\NormalTok{n\_periods }\OtherTok{\textless{}{-}} \DecValTok{10}
-\NormalTok{n\_sims }\OtherTok{\textless{}{-}} \DecValTok{100}  \CommentTok{\# Multiple simulations}
-
-\CommentTok{\# Simulate multiple paths}
-\NormalTok{simulate\_final\_balance }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(initial, periods) \{}
-\NormalTok{  balance }\OtherTok{\textless{}{-}}\NormalTok{ initial}
-  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{periods) \{}
-\NormalTok{    coin\_flip }\OtherTok{\textless{}{-}} \FunctionTok{rbinom}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\FloatTok{0.5}\NormalTok{)}
-    \ControlFlowTok{if}\NormalTok{ (coin\_flip }\SpecialCharTok{==} \DecValTok{1}\NormalTok{) \{}
-\NormalTok{      balance }\OtherTok{\textless{}{-}}\NormalTok{ balance }\SpecialCharTok{+} \DecValTok{100}  \CommentTok{\# $100 gain}
-\NormalTok{    \} }\ControlFlowTok{else}\NormalTok{ \{}
-\NormalTok{      balance }\OtherTok{\textless{}{-}}\NormalTok{ balance }\SpecialCharTok{{-}} \DecValTok{100}  \CommentTok{\# $100 loss}
-\NormalTok{    \}}
-\NormalTok{  \}}
-  \FunctionTok{return}\NormalTok{(balance)}
-\NormalTok{\}}
-
-\CommentTok{\# Run multiple simulations}
-\NormalTok{final\_balances }\OtherTok{\textless{}{-}} \FunctionTok{replicate}\NormalTok{(n\_sims, }\FunctionTok{simulate\_final\_balance}\NormalTok{(initial\_balance, n\_periods))}
-
-\CommentTok{\# Create data frame}
-\NormalTok{distribution\_data }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
-  \AttributeTok{sim\_num =} \DecValTok{1}\SpecialCharTok{:}\NormalTok{n\_sims,}
-  \AttributeTok{final\_balance =}\NormalTok{ final\_balances}
-\NormalTok{)}
-
-\CommentTok{\# Create histogram}
-\FunctionTok{ggplot}\NormalTok{(distribution\_data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ final\_balance)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{bins =} \DecValTok{20}\NormalTok{, }\AttributeTok{fill =} \StringTok{"plum"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.8}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ initial\_balance, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{linewidth =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}
-    \AttributeTok{title =} \StringTok{"Distribution of Final Account Balances"}\NormalTok{,}
-    \AttributeTok{subtitle =} \FunctionTok{paste}\NormalTok{(}\StringTok{"100 Simulations,"}\NormalTok{, n\_periods, }\StringTok{"Periods Each"}\NormalTok{),}
-    \AttributeTok{x =} \StringTok{"Final Balance ($)"}\NormalTok{,}
-    \AttributeTok{y =} \StringTok{"Frequency"}\NormalTok{,}
-    \AttributeTok{caption =} \StringTok{"Red line shows initial balance ($1,000)"}
-\NormalTok{  ) }\SpecialCharTok{+}
-  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{dollar\_format}\NormalTok{()) }\SpecialCharTok{+}
-  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{theme}\NormalTok{(}
-    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{14}\NormalTok{, }\AttributeTok{face =} \StringTok{"bold"}\NormalTok{),}
-    \AttributeTok{plot.subtitle =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{12}\NormalTok{, }\AttributeTok{color =} \StringTok{"gray50"}\NormalTok{)}
-\NormalTok{  )}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}[H]
-
-{\centering \pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/distribution-sim-r-3.pdf}}
-
-}
-
-\caption{R probability distribution of final balances}
-
-\end{figure}%
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Summary statistics}
-\NormalTok{summary\_stats }\OtherTok{\textless{}{-}}\NormalTok{ distribution\_data }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{summarise}\NormalTok{(}
-    \AttributeTok{mean\_balance =} \FunctionTok{mean}\NormalTok{(final\_balance),}
-    \AttributeTok{median\_balance =} \FunctionTok{median}\NormalTok{(final\_balance),}
-    \AttributeTok{prob\_above\_initial =} \FunctionTok{mean}\NormalTok{(final\_balance }\SpecialCharTok{\textgreater{}}\NormalTok{ initial\_balance)}
-\NormalTok{  )}
-
-\FunctionTok{print}\NormalTok{(}\StringTok{"Summary Statistics:"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-[1] "Summary Statistics:"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{summary\_stats}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-# A tibble: 1 x 3
-  mean_balance median_balance prob_above_initial
-         <dbl>          <dbl>              <dbl>
-1         1002           1000               0.39
-\end{verbatim}
 
 \subsubsection{Python}
 
@@ -1167,12 +1300,22 @@ simulations:
 
 \NormalTok{plt.tight\_layout()}
 \NormalTok{plt.show()}
+
+\CommentTok{\# Summary statistics}
+\NormalTok{mean\_balance }\OperatorTok{=}\NormalTok{ distribution\_data[}\StringTok{\textquotesingle{}final\_balance\textquotesingle{}}\NormalTok{].mean()}
+\NormalTok{median\_balance }\OperatorTok{=}\NormalTok{ distribution\_data[}\StringTok{\textquotesingle{}final\_balance\textquotesingle{}}\NormalTok{].median()}
+\NormalTok{prob\_above\_initial }\OperatorTok{=}\NormalTok{ (distribution\_data[}\StringTok{\textquotesingle{}final\_balance\textquotesingle{}}\NormalTok{] }\OperatorTok{\textgreater{}}\NormalTok{ initial\_balance).mean()}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Summary Statistics:"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Mean balance: $}\SpecialCharTok{\{}\NormalTok{mean\_balance}\SpecialCharTok{:,.2f\}}\SpecialStringTok{"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Median balance: $}\SpecialCharTok{\{}\NormalTok{median\_balance}\SpecialCharTok{:,.2f\}}\SpecialStringTok{"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Probability above initial: }\SpecialCharTok{\{}\NormalTok{prob\_above\_initial}\SpecialCharTok{:.3f\}}\SpecialStringTok{"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{figure}[H]
 
-{\centering \pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/distribution-sim-python-1.pdf}}
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/distribution-sim-python-output-1.pdf}}
 
 }
 
@@ -1180,48 +1323,10 @@ simulations:
 
 \end{figure}%
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Summary statistics}
-\NormalTok{mean\_balance }\OperatorTok{=}\NormalTok{ distribution\_data[}\StringTok{\textquotesingle{}final\_balance\textquotesingle{}}\NormalTok{].mean()}
-\NormalTok{median\_balance }\OperatorTok{=}\NormalTok{ distribution\_data[}\StringTok{\textquotesingle{}final\_balance\textquotesingle{}}\NormalTok{].median()}
-\NormalTok{prob\_above\_initial }\OperatorTok{=}\NormalTok{ (distribution\_data[}\StringTok{\textquotesingle{}final\_balance\textquotesingle{}}\NormalTok{] }\OperatorTok{\textgreater{}}\NormalTok{ initial\_balance).mean()}
-
-\BuiltInTok{print}\NormalTok{(}\StringTok{"Summary Statistics:"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{verbatim}
 Summary Statistics:
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Mean balance: $}\SpecialCharTok{\{}\NormalTok{mean\_balance}\SpecialCharTok{:,.2f\}}\SpecialStringTok{"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
 Mean balance: $1,020.00
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Median balance: $}\SpecialCharTok{\{}\NormalTok{median\_balance}\SpecialCharTok{:,.2f\}}\SpecialStringTok{"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
 Median balance: $1,000.00
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Probability above initial: }\SpecialCharTok{\{}\NormalTok{prob\_above\_initial}\SpecialCharTok{:.3f\}}\SpecialStringTok{"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
 Probability above initial: 0.420
 \end{verbatim}
 
