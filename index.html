@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
-<head>
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.22">
 
-<meta charset="utf-8" />
-<meta name="generator" content="quarto-1.8.22" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Simulation Challenge</title>
@@ -24,16 +22,27 @@ ul.task-list li input[type="checkbox"] {
 }
 </style>
 
-<!-- htmldependencies:E3FAD763 -->
+
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="index_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="index_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="index_files/libs/quarto-html/anchor.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-cd7454b418030687c631a6a7286fbe16.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="index_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
 
-<body>
+<body class="fullcontent quarto-light">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-</div>
+
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -60,7 +69,7 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Expected Value Analysis:</strong> What is the “expected value” of your account balance after 1 coin flip for the original game?</li>
 </ol>
 <section id="the-expected-value-of-the-account-balance-after-1-coin-flip-for-the-original-game-is-1000-0.5-1.5-0.5-0.6-1050.-therefore-the-expected-value-is-positive-and-1050." class="level2">
-<h2>The expected value of the account balance after 1 coin flip for the original game is $1000 * (0.5 * 1.5 + 0.5 * 0.6) = $1050. Therefore, the expected value is positive and $1050.</h2>
+<h2 class="anchored" data-anchor-id="the-expected-value-of-the-account-balance-after-1-coin-flip-for-the-original-game-is-1000-0.5-1.5-0.5-0.6-1050.-therefore-the-expected-value-is-positive-and-1050.">The expected value of the account balance after 1 coin flip for the original game is $1000 * (0.5 * 1.5 + 0.5 * 0.6) = $1050. Therefore, the expected value is positive and $1050.</h2>
 <div id="q1-expected-value" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>Starting balance: $1,000
@@ -68,11 +77,11 @@ Expected value after one flip: $1,050</code></pre>
 </div>
 </div>
 <ol start="2" type="1">
-<li><strong>Expectation vs. Reality:</strong> Is the expected value positive or negative? Do you expect your account to be worth more or less than $1,000 based on this result?</li>
+<li><strong>Expectation vs.&nbsp;Reality:</strong> Is the expected value positive or negative? Do you expect your account to be worth more or less than $1,000 based on this result?</li>
 </ol>
 </section>
 <section id="the-expected-value-is-positive-with-a-gain-of-50.-therefore-i-expect-my-account-to-be-worth-more-than-1000." class="level2">
-<h2>The expected value is positive with a gain of $50. Therefore, I expect my account to be worth more than $1,000.</h2>
+<h2 class="anchored" data-anchor-id="the-expected-value-is-positive-with-a-gain-of-50.-therefore-i-expect-my-account-to-be-worth-more-than-1000.">The expected value is positive with a gain of $50. Therefore, I expect my account to be worth more than $1,000.</h2>
 <div id="q2-expectation-vs-reality" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>Expected value: $1,050
@@ -81,16 +90,16 @@ Expected balance &gt; $1,000? Yes</code></pre>
 </div>
 </div>
 <ol start="3" type="1">
-<li><strong>Single Simulation:</strong> Run one simulation showing the dynamics of your account balance over time. Make an object-oriented matplotlib OR ggplot2 plot showing your simulated account balance over time (i.e. as you age). Comment on the results, are you happy?</li>
+<li><strong>Single Simulation:</strong> Run one simulation showing the dynamics of your account balance over time. Make an object-oriented matplotlib OR ggplot2 plot showing your simulated account balance over time (i.e.&nbsp;as you age). Comment on the results, are you happy?</li>
 </ol>
 </section>
 <section id="answer-below-is-a-single-simulation-of-the-original-game-multiplicative-50-on-heads--40-on-tails-over-30-years-with-an-object-oriented-matplotlib-plot.-the-final-balance-can-vary-greatly-a-single-path-can-end-very-high-or-very-low-so-happiness-depends-on-the-particular-sequence-of-flips.-overall-years-10-to-mid-20-i-am-not-too-happy-because-my-account-balance-is-very-low.-moreover-starting-with-000-at-age-0-and-ending-with-200-at-age-30-i-lost-over-800-which-is-not-a-good-outcome-of-the-simulation-i-would-have-preferred-to-see-my-account-balance-grow-over-time." class="level2">
-<h2>Answer: Below is a single simulation of the original game (multiplicative: +50% on heads, -40% on tails) over 30 years with an object-oriented Matplotlib plot. The final balance can vary greatly; a single path can end very high or very low, so happiness depends on the particular sequence of flips. Overall, years 10 to mid 20, I am not too happy because my account balance is very low. Moreover, starting with $!,000 at age 0 and ending with $200 at age 30, I lost over $800 which is not a good outcome of the simulation; I would have preferred to see my account balance grow over time.</h2>
+<h2 class="anchored" data-anchor-id="answer-below-is-a-single-simulation-of-the-original-game-multiplicative-50-on-heads--40-on-tails-over-30-years-with-an-object-oriented-matplotlib-plot.-the-final-balance-can-vary-greatly-a-single-path-can-end-very-high-or-very-low-so-happiness-depends-on-the-particular-sequence-of-flips.-overall-years-10-to-mid-20-i-am-not-too-happy-because-my-account-balance-is-very-low.-moreover-starting-with-000-at-age-0-and-ending-with-200-at-age-30-i-lost-over-800-which-is-not-a-good-outcome-of-the-simulation-i-would-have-preferred-to-see-my-account-balance-grow-over-time.">Answer: Below is a single simulation of the original game (multiplicative: +50% on heads, -40% on tails) over 30 years with an object-oriented Matplotlib plot. The final balance can vary greatly; a single path can end very high or very low, so happiness depends on the particular sequence of flips. Overall, years 10 to mid 20, I am not too happy because my account balance is very low. Moreover, starting with $!,000 at age 0 and ending with $200 at age 30, I lost over $800 which is not a good outcome of the simulation; I would have preferred to see my account balance grow over time.</h2>
 <div id="cell-q3-single-simulation" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
-<figure>
-<p><img src="index_files/figure-html/q3-single-simulation-output-1.png" id="q3-single-simulation" width="855" height="469" /></p>
+<figure class="figure">
+<p><img src="index_files/figure-html/q3-single-simulation-output-1.png" id="q3-single-simulation" width="855" height="469" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -99,19 +108,19 @@ Expected balance &gt; $1,000? Yes</code></pre>
 </div>
 </div>
 <section id="questions-to-answer-for-85-grade-on-challenge" class="level3">
-<h3>Questions to Answer for 85% Grade on Challenge</h3>
+<h3 class="anchored" data-anchor-id="questions-to-answer-for-85-grade-on-challenge">Questions to Answer for 85% Grade on Challenge</h3>
 <ol start="4" type="1">
 <li><strong>Multiple Simulations:</strong> Run 100 simulations modelling the dynamics of your account balance over time. Make an object-oriented matplotlib OR ggplot2 plot showing a probability distribution of the 100 simulatedaccount balance at age 55. Comment on the results, are you happy? Why or why not?</li>
 </ol>
 </section>
 </section>
 <section id="answer-below-are-100-simulations-of-the-original-game-over-30-years-age-25-to-55-with-a-matplotlib-histogram-showing-the-distribution-of-final-balances.-i-did-buckets-for-every-500-and-for-any-value-above-10000-i-placed-it-in-that-bucket.-i-am-not-very-happy-with-the-results-because-there-is-a-70-chance-that-my-account-balance-by-age-55-will-be-below-the-1000-threshold.-therefore-i-am-not-a-risky-player-so-there-is-no-point-of-me-trying-to-play-this-game-since-most-likely-i-will-end-up-losing-money.-there-is-a-small-chance-to-hit-the-lottery-and-end-up-with-over-10000-but-that-risk-is-not-worth-it-statistically." class="level2">
-<h2>Answer: Below are 100 simulations of the original game over 30 years (age 25 to 55) with a Matplotlib histogram showing the distribution of final balances. I did buckets for every $500 and for any value above $10,000, I placed it in that bucket. I am not very happy with the results because there is a 70% chance that my account balance by age 55 will be below the $1,000 threshold. Therefore, I am not a risky player so there is no point of me trying to play this game since most likely, I will end up losing money. There is a small chance to hit the lottery and end up with over $10,000, but that risk is not worth it statistically.</h2>
+<h2 class="anchored" data-anchor-id="answer-below-are-100-simulations-of-the-original-game-over-30-years-age-25-to-55-with-a-matplotlib-histogram-showing-the-distribution-of-final-balances.-i-did-buckets-for-every-500-and-for-any-value-above-10000-i-placed-it-in-that-bucket.-i-am-not-very-happy-with-the-results-because-there-is-a-70-chance-that-my-account-balance-by-age-55-will-be-below-the-1000-threshold.-therefore-i-am-not-a-risky-player-so-there-is-no-point-of-me-trying-to-play-this-game-since-most-likely-i-will-end-up-losing-money.-there-is-a-small-chance-to-hit-the-lottery-and-end-up-with-over-10000-but-that-risk-is-not-worth-it-statistically.">Answer: Below are 100 simulations of the original game over 30 years (age 25 to 55) with a Matplotlib histogram showing the distribution of final balances. I did buckets for every $500 and for any value above $10,000, I placed it in that bucket. I am not very happy with the results because there is a 70% chance that my account balance by age 55 will be below the $1,000 threshold. Therefore, I am not a risky player so there is no point of me trying to play this game since most likely, I will end up losing money. There is a small chance to hit the lottery and end up with over $10,000, but that risk is not worth it statistically.</h2>
 <div id="cell-q4-multiple-simulations" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
-<figure>
-<p><img src="index_files/figure-html/q4-multiple-simulations-output-1.png" id="q4-multiple-simulations" width="1335" height="756" /></p>
+<figure class="figure">
+<p><img src="index_files/figure-html/q4-multiple-simulations-output-1.png" id="q4-multiple-simulations" width="1335" height="756" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -125,14 +134,14 @@ Minimum balance: $0.13</code></pre>
 </div>
 </div>
 <section id="questions-to-answer-for-95-grade-on-challenge" class="level3">
-<h3>Questions to Answer for 95% Grade on Challenge</h3>
+<h3 class="anchored" data-anchor-id="questions-to-answer-for-95-grade-on-challenge">Questions to Answer for 95% Grade on Challenge</h3>
 <ol start="5" type="1">
 <li><strong>Probability Analysis:</strong> Based on the 100 simulations above, what is the probability that your account balance will be greater than $1,000 at age 55?</li>
 </ol>
 </section>
 </section>
 <section id="answer-based-on-the-100-simulations-from-question-4-the-probability-of-ending-above-1000-at-age-55-is-30.-this-means-that-the-probability-you-end-up-with-less-than-1000-will-be-70-which-is-not-a-great-outcome-for-the-player." class="level2">
-<h2>Answer: Based on the 100 simulations from Question 4, the probability of ending above $1,000 at age 55 is 30%. This means that the probability you end up with less than $1,000 will be 70% which is not a great outcome for the player.</h2>
+<h2 class="anchored" data-anchor-id="answer-based-on-the-100-simulations-from-question-4-the-probability-of-ending-above-1000-at-age-55-is-30.-this-means-that-the-probability-you-end-up-with-less-than-1000-will-be-70-which-is-not-a-great-outcome-for-the-player.">Answer: Based on the 100 simulations from Question 4, the probability of ending above $1,000 at age 55 is 30%. This means that the probability you end up with less than $1,000 will be 70% which is not a great outcome for the player.</h2>
 <div id="q5-probability-analysis" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>Results from 100 simulations:
@@ -146,19 +155,19 @@ Answer: The probability that your account balance will be greater than $1,000 at
 </div>
 </div>
 <section id="questions-to-answer-for-100-grade-on-challenge" class="level3">
-<h3>Questions to Answer for 100% Grade on Challenge</h3>
+<h3 class="anchored" data-anchor-id="questions-to-answer-for-100-grade-on-challenge">Questions to Answer for 100% Grade on Challenge</h3>
 <ol start="6" type="1">
-<li><strong>Strategy Comparison:</strong> Run 100 simulations for the modified game strategy shown below in <strong>?@exm-ErgodicityEconomicsExampleModified</strong>. What is the probability that your account balance will be greater than $10,000 at age 55? Is this probability higher or lower than the probability in the original game?</li>
+<li><strong>Strategy Comparison:</strong> Run 100 simulations for the modified game strategy (betting 50% of balance each round). What is the probability that your account balance will be greater than $10,000 at age 55? Is this probability higher or lower than the probability in the original game?</li>
 </ol>
 </section>
 </section>
 <section id="answer-below-are-100-simulations-of-the-modified-game-strategy-betting-50-of-balance-each-round-compared-to-the-original-game.-the-modified-strategy-shows-different-dynamics-due-to-the-fixed-betting-percentage.-what-i-can-see-from-the-graph-is-that-the-probability-that-my-account-balance-is-greater-than-10000-is-lower-in-the-modified-game-than-the-original-game.-there-is-a-3-chance-that-i-will-end-up-with-over-10000-in-original-game-compared-to-a-1-chance-i-will-end-up-with-over-10000-in-the-modified-game.-however-if-the-threshold-is-1000-the-probability-is-much-higher-in-the-modified-game-as-we-can-see-in-the-graph-there-is-higher-amount-of-clusters-above-1000-compared-to-the-original-game." class="level2">
-<h2>Answer: Below are 100 simulations of the modified game strategy (betting 50% of balance each round) compared to the original game. The modified strategy shows different dynamics due to the fixed betting percentage. What I can see from the graph is that the probability that my account balance is greater than $10,000 is lower in the modified game than the original game. There is a 3% chance that I will end up with over $10,000 in original game compared to a 1% chance I will end up with over $10,000 in the modified game. However, if the threshold is $1,000, the probability is much higher in the modified game as we can see in the graph there is higher amount of clusters above $1,000 compared to the original game.</h2>
+<h2 class="anchored" data-anchor-id="answer-below-are-100-simulations-of-the-modified-game-strategy-betting-50-of-balance-each-round-compared-to-the-original-game.-the-modified-strategy-shows-different-dynamics-due-to-the-fixed-betting-percentage.-what-i-can-see-from-the-graph-is-that-the-probability-that-my-account-balance-is-greater-than-10000-is-lower-in-the-modified-game-than-the-original-game.-there-is-a-3-chance-that-i-will-end-up-with-over-10000-in-original-game-compared-to-a-1-chance-i-will-end-up-with-over-10000-in-the-modified-game.-however-if-the-threshold-is-1000-the-probability-is-much-higher-in-the-modified-game-as-we-can-see-in-the-graph-there-is-higher-amount-of-clusters-above-1000-compared-to-the-original-game.">Answer: Below are 100 simulations of the modified game strategy (betting 50% of balance each round) compared to the original game. The modified strategy shows different dynamics due to the fixed betting percentage. What I can see from the graph is that the probability that my account balance is greater than $10,000 is lower in the modified game than the original game. There is a 3% chance that I will end up with over $10,000 in original game compared to a 1% chance I will end up with over $10,000 in the modified game. However, if the threshold is $1,000, the probability is much higher in the modified game as we can see in the graph there is higher amount of clusters above $1,000 compared to the original game.</h2>
 <div id="cell-q6-strategy-comparison" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
-<figure>
-<p><img src="index_files/figure-html/q6-strategy-comparison-output-1.png" id="q6-strategy-comparison" width="1527" height="662" /></p>
+<figure class="figure">
+<p><img src="index_files/figure-html/q6-strategy-comparison-output-1.png" id="q6-strategy-comparison" width="1527" height="662" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -175,7 +184,7 @@ This is LOWER than the original game (3.0%).</code></pre>
 
 </main>
 <!-- /main column -->
-<script id = "quarto-html-after-body" type="application/javascript">
+<script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -576,6 +585,7 @@ This is LOWER than the original game (3.0%).</code></pre>
   </script>
 </div> <!-- /content -->
 
-</body>
 
-</html>
+
+
+</body></html>
