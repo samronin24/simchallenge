@@ -5,7 +5,7 @@ format:
   html: default
   pdf: default
 execute:
-  echo: true
+  echo: false
   eval: true
 ---
 
@@ -203,8 +203,7 @@ print(f"Final balance after {n_years} years: ${balances[-1]:,.2f}")
 
 4. **Multiple Simulations:** Run 100 simulations modelling the dynamics of your account balance over time. Make an object-oriented matplotlib OR ggplot2 plot showing a probability distribution of the 100 simulatedaccount balance at age 55. Comment on the results, are you happy? Why or why not?
 
-## Answer: Below are 100 simulations of the original game over 30 years (age 25 to 55) with a Matplotlib histogram showing the distribution of final balances. The results show extreme variability - while some paths end very high, many end very low due to the multiplicative nature of the game.
-
+## Answer: Below are 100 simulations of the original game over 30 years (age 25 to 55) with a Matplotlib histogram showing the distribution of final balances. I did buckets for every $500 and for any value above $10,000, I placed it in that bucket. I am not very happy with the results because there is a 70% chance that my account balance by age 55 will be below the $1,000 threshold. Therefore, I am not a risky player so there is no point of me trying to play this game since most likely, I will end up losing money. There is a small chance to hit the lottery and end up with over $10,000, but that risk is not worth it statistically. 
 ```{python}
 #| label: q4-multiple-simulations
 #| echo: true
@@ -307,383 +306,146 @@ print(f"Minimum balance: ${min_balance:,.2f}")
 
 5. **Probability Analysis:** Based on the 100 simulations above, what is the probability that your account balance will be greater than $1,000 at age 55?
 
+## Answer: Based on the 100 simulations from Question 4, the probability of ending above $1,000 at age 55 is 30%. This means that the probability you end up with less than $1,000 will be 70% which is not a great outcome for the player.
+
+```{python}
+#| label: q5-probability-analysis
+#| echo: true
+
+# Use the same final_balances from Question 4 simulations
+# (In practice, you'd use the results from the previous simulation)
+
+# Re-run the same simulation for consistency
+import numpy as np
+
+# Reproducibility (same seed as Question 4)
+np.random.seed(456)
+
+# Parameters (same as Question 4)
+initial_balance = 1000.0
+n_years = 30
+n_sims = 100
+p_heads = 0.5
+
+# Function to simulate one path (same as Question 4)
+def simulate_one_path(initial, years):
+    balance = initial
+    for _ in range(years):
+        flip = np.random.binomial(1, p_heads)
+        if flip == 1:
+            balance *= 1.5  # +50% on heads
+        else:
+            balance *= 0.6   # -40% on tails
+    return balance
+
+# Run 100 simulations (same as Question 4)
+final_balances = [simulate_one_path(initial_balance, n_years) for _ in range(n_sims)]
+
+# Calculate probability of ending above $1,000
+prob_above_1000 = np.mean(np.array(final_balances) > 1000)
+prob_below_1000 = 1 - prob_above_1000
+
+# Count actual results
+count_above_1000 = np.sum(np.array(final_balances) > 1000)
+count_below_1000 = n_sims - count_above_1000
+
+print(f"Results from 100 simulations:")
+print(f"Simulations ending above $1,000: {count_above_1000}")
+print(f"Simulations ending below $1,000: {count_below_1000}")
+print(f"")
+print(f"Probability of ending above $1,000: {prob_above_1000:.3f} ({prob_above_1000:.1%})")
+print(f"Probability of ending below $1,000: {prob_below_1000:.3f} ({prob_below_1000:.1%})")
+print(f"")
+print(f"Answer: The probability that your account balance will be greater than $1,000 at age 55 is {prob_above_1000:.1%}")
+```
+
 ### Questions to Answer for 100% Grade on Challenge
 
 6. **Strategy Comparison:** Run 100 simulations for the modified game strategy shown below in @exm-ErgodicityEconomicsExampleModified. What is the probability that your account balance will be greater than $10,000 at age 55? Is this probability higher or lower than the probability in the original game?
 
-### Modified Game Strategy
-
-::: {#exm-ErgodicityEconomicsExampleModified}
-Imagine you are offered the following game and given a $1,000 budget in a special account to play the game: I will flip a coin, and if it comes up heads, we increase your bet by 50%; if it comes up tails, we reduce your bet by 40%. You must bet exactly 50% of your current account balance on each flip, and this 50% is locked in for each round. We are not only doing this once, but we will do it once per year until you turn 55. When you turn 55, you will receive the balance in your account.
-:::
-
-## Technical Implementation Preferences 💡
-
-### Setting Up Your Analysis
-
-**For R Users:**
-
-- Use `tidyverse` for data manipulation
-- Use `ggplot2` for visualizations
-- Use `set.seed()` for reproducible results
-
-**For Python Users:**
-
-- Use `numpy` for numerical operations
-- Use `pandas` for data manipulation
-- Use `matplotlib` (object-oriented)
-- Use `np.random.seed()` for reproducible results
-
-### Visualization Preferences
-
-- **Professional Styling:** Use consistent colors, clear labels, readable fonts, and informative titles
-
-## Submission Checklist ✅
-
-**Minimum Requirements (Required for Any Points):**
-
-- [ ] Quarto document created with clear narrative
-- [ ] Document rendered to HTML successfully
-- [ ] Repository "simulationChallenge" created
-- [ ] HTML files uploaded to repository
-- [ ] GitHub Pages enabled and working
-- [ ] Site accessible at `https://[your-username].github.io/simulationChallenge/`
-
-**75% Grade Requirements:**
-
-- [ ] Expected value calculations shown (Question 1)
-- [ ] Expectation vs. reality analysis (Question 2)
-- [ ] Single simulation with time series plot (Question 3)
-- [ ] Clear interpretation of single simulation results
-
-**85% Grade Requirements:**
-
-- [ ] 100 simulations with distribution analysis (Question 4)
-- [ ] Probability distribution plot of final account balances
-- [ ] Clear interpretation of multiple simulation results
-
-**95% Grade Requirements:**
-
-- [ ] Probability calculations for original strategy (Question 5)
-- [ ] Analysis of probability that balance > $1,000 at age 55
-
-**100% Grade Requirements:**
-
-- [ ] 100 simulations for modified strategy (Question 6)
-- [ ] Probability calculations for modified strategy
-- [ ] Comparative analysis between both strategies
-- [ ] Analysis of probability that balance > $10,000 at age 55
-
-**Code Quality (All Grades):**
-
-- [ ] Reproducible results (seeds set)
-- [ ] Clean, well-commented code
-- [ ] Appropriate use of functions and loops
-- [ ] Professional visualization styling
-
-### Resources
-
-- **Quarto Markdown:** [quarto.org/docs/authoring/markdown-basics.html](https://quarto.org/docs/authoring/markdown-basics.html)
-- **Quarto Documentation:** [quarto.org/docs](https://quarto.org/docs)
-- **R for Data Science:** [r4ds.had.co.nz](https://r4ds.had.co.nz)
-- **Python Data Science Handbook:** [jakevdp.github.io/PythonDataScienceHandbook](https://jakevdp.github.io/PythonDataScienceHandbook)
-
-### Getting Started Tips
-
-::: {.callout-note}
-## 🎯 Navy SEALs Motto
-
-> "Slow is Smooth and Smooth is Fast"
-
-*Take your time to understand the simulation mechanics, plan your approach carefully, and execute with precision. Rushing through this challenge will only lead to errors and confusion.*
-:::
-
-- **Browse [Essential Simulation Concepts](@sec-simulation-concepts):** This section will give you a good understanding of the concepts you need to know to complete the challenge.
-- **Start Simple:** Begin with a single simulation to understand the mechanics
-- **Document Everything:** Explain your reasoning and interpret your results
-- **Forgetting to Set Seeds:** Always set random seeds for reproducible results
-- **Total time to complete:** ~3-4 hours for the 100% grade ⏱️
-- **Good luck, and remember simulation will steer you right even when intuition will steer you wrong!** 🎲
-
-::: {.callout-warning}
-## 💾 Important: Save Your Work Frequently!
-
-**Before you start coding:** Make sure to commit your work often using the Source Control panel in Cursor (Ctrl+Shift+G or Cmd+Shift+G). This prevents the AI from overwriting your progress and ensures you don't lose your work.
-
-**Commit after each major step:**
-
-- After completing each simulation example
-- After finishing each challenge question
-- Before asking the AI for help with new code
-
-**How to commit:**
-
-1. Open Source Control panel (Ctrl+Shift+G)
-2. Stage your changes (+ button)
-3. Write a descriptive commit message
-4. Click the checkmark to commit
-
-*Remember: Frequent commits are your safety net!*
-:::
-
-## Essential Simulation Concepts 🎯 {#sec-simulation-concepts}
-
-Before diving into the challenge, let's review the key simulation concepts you'll need. These examples will prepare you for the investment game analysis.
-
-### 1. Simple Simulation: Coin Flip Game
-
-Let's start with a basic coin flip simulation to understand the mechanics:
-
-#### Generative DAG Model for the Simple Coin Flip Game
+## Answer: Below are 100 simulations of the modified game strategy (betting 50% of balance each round) compared to the original game. The modified strategy shows different dynamics due to the fixed betting percentage. What I can see from the graph is that the probability that my account balance is greater than $10,000 is lower in the modified game than the original game. There is a 3% chance that I will end up with over $10,000 in original game compared to a 1% chance I will end up with over $10,000 in the modified game. However, if the threshold is $1,000, the probability is much higher in the modified game as we can see in the graph there is higher amount of clusters above $1,000 compared to the original game.
 
 ```{python}
-#| echo: false
-#| include: false
-#| eval: false
-import daft
-
-# Create the DAG for simple coin flip game
-simpleCoinDAG = daft.PGM(dpi=150, alternate_style="outer")
-
-# Coin flip (stochastic node)
-simpleCoinDAG.add_node("X", "Coin Flip\n$X \\sim \\text{Bernoulli}(0.5)$", x=1, y=1, aspect=4,
-                      plot_params={'facecolor': 'aliceblue'})
-
-# Winnings (deterministic node)
-simpleCoinDAG.add_node("W", "Winnings\n$W = 100$ if $X = 1$ else $-100$", x=1, y=0, aspect=5.4,
-                      alternate=True, plot_params={'facecolor': 'aliceblue'})
-
-# Add edge showing the relationship
-simpleCoinDAG.add_edge("X", "W")
-```
-
-```{python}
-#| label: fig-simple-coin-dag
-#| fig-cap: Generative DAG model for the simple coin flip game showing the relationship between coin flip outcome and winnings
-#| echo: false
-#| eval: false
-simpleCoinDAG.show()
-```
-
-**Key Difference from Investment Game:** Unlike the investment game DAG (@fig-investment-dag) which models wealth evolution over multiple time periods with multiplicative changes, this simple coin flip DAG represents a single-period game with additive winnings. The investment game shows how wealth compounds over time ($W_t = 1.5 \times W_{t-1}$ or $W_t = 0.6 \times W_{t-1}$), while this simple game shows fixed winnings ($W = +100$ or $W = -100$) based on a single coin flip outcome.
-
-::: {.panel-tabset}
-
-### Python
-
-```{python}
-#| label: simple-sim-python
-#| fig-cap: Python simulation of coin flip game
+#| label: q6-strategy-comparison
 #| echo: true
 
 import numpy as np
-import pandas as pd
-
-# Set seed for reproducibility
-np.random.seed(123)
-
-# Number of simulations
-n_sims = 10
-
-# Step 1: Draw coin flips (stochastic node)
-X = np.random.binomial(n=1, p=0.5, size=n_sims)
-
-# Step 2: Compute winnings (deterministic node)
-W = np.where(X == 1, 100, -100)
-
-# Combine into data frame
-sim_data = pd.DataFrame({
-    'sim_num': range(1, n_sims + 1),
-    'coin_flip': X,
-    'winnings': W
-})
-
-# Display results
-sim_data
-```
-
-:::
-
-### 2. Time-Series Simulation: Account Balance Over Time
-
-Now let's simulate how an account balance changes over multiple periods:
-
-#### Generative DAG Model for Time-Series Account Balance
-
-```{python}
-#| echo: false
-#| include: false
-#| eval: false
-import daft
-
-# Create the DAG for time-series simulation
-timeSeriesDAG = daft.PGM(dpi=150, alternate_style="outer")
-
-# Initial balance (deterministic)
-timeSeriesDAG.add_node("B0", "Initial Balance\n$B_0 = 1000$", x=2, y=2.5, aspect=5.4,
-                      alternate=True, plot_params={'facecolor': 'aliceblue'})
-
-# Time t nodes
-timeSeriesDAG.add_node("Ct", "Coin Flip t\n$C_t \\sim \\text{Bernoulli}(0.5)$", x=-3, y=1, aspect=4, scale=1.6,
-                      plot_params={'facecolor': 'aliceblue'})
-timeSeriesDAG.add_node("Bt", "Balance t\n$B_t = B_{t-1} + 100$ if $C_t = 1$\n$B_t = B_{t-1} - 100$ if $C_t = 0$", x=2, y=1, scale=1.6, aspect=4,
-                      alternate=True, plot_params={'facecolor': 'aliceblue'})
-
-# Add edges showing the relationships
-timeSeriesDAG.add_edge("B0", "Bt")
-timeSeriesDAG.add_edge("Ct", "Bt")
-
-# Add plate around time-dependent nodes
-timeSeriesDAG.add_plate([-5, 0.5, 9, 1.0], label="t = 1, ..., T", shift=-0.1)
-```
-
-```{python}
-#| label: fig-timeseries-dag
-#| fig-cap: Generative DAG model for time-series account balance simulation showing how balance evolves sequentially over multiple periods
-#| echo: false
-#| eval: false
-timeSeriesDAG.show()
-```
-
-**Key Difference from Simple Coin Flip Game:** Unlike the simple coin flip DAG (@fig-simple-coin-dag) which represents a single-period game, this time-series DAG models sequential balance evolution over multiple periods. Each period's balance depends on the previous period's balance plus the current coin flip outcome. The simple game shows independent winnings per flip, while this model shows cumulative balance changes where $B_t = B_{t-1} + \Delta_t$ and $\Delta_t = +100$ or $-100$ based on the coin flip.
-
-::: {.panel-tabset}
-
-### Python
-
-```{python}
-#| label: timeseries-sim-python
-#| fig-cap: Python time-series simulation of account balance
-#| echo: true
-
-import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 
-# Set seed for reproducibility
-np.random.seed(456)
-
-# Parameters
-initial_balance = 1000
-n_periods = 10
-n_sims = 1  # Start with one simulation
-
-# Simulate one path
-def simulate_path(initial, periods):
-    balance = initial
-    path = [initial]
-    
-    for i in range(periods):
-        coin_flip = np.random.binomial(1, 0.5)
-        if coin_flip == 1:
-            balance = balance + 100  # $100 gain
-        else:
-            balance = balance - 100  # $100 loss
-        path.append(balance)
-    
-    return path
-
-# Run simulation
-time_series_data = pd.DataFrame({
-    'period': range(n_periods + 1),
-    'balance': simulate_path(initial_balance, n_periods)
-})
-
-# Create time series plot
-fig, ax = plt.subplots(figsize=(10, 6))
-ax.plot(time_series_data['period'], time_series_data['balance'], 
-        color='cadetblue', linewidth=2, marker='o', markersize=6)
-ax.set_title('Account Balance Over Time\nSingle Simulation Path', 
-             fontsize=14, fontweight='bold')
-ax.set_xlabel('Period', fontsize=12)
-ax.set_ylabel('Account Balance ($)', fontsize=12)
-ax.grid(True, alpha=0.3)
-ax.set_ylim(0, max(time_series_data['balance']) * 1.1)
-
-# Format y-axis as currency
-ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'${x:,.0f}'))
-
-plt.tight_layout()
-plt.show()
-
-# Show the data
-print("Time Series Data:")
-print(time_series_data)
-```
-
-:::
-
-### 3. Probability Distribution: Final Balance Distribution
-
-Let's see what the distribution of final balances looks like across many simulations:
-
-::: {.panel-tabset}
-
-### Python
-
-```{python}
-#| label: distribution-sim-python
-#| fig-cap: Python probability distribution of final balances
-#| echo: true
-
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-
-# Set seed for reproducibility
+# Reproducibility
 np.random.seed(789)
 
 # Parameters
-initial_balance = 1000
-n_periods = 10
-n_sims = 100  # Multiple simulations
+initial_balance = 1000.0
+n_years = 30
+n_sims = 100
+p_heads = 0.5
 
-# Simulate multiple paths
-def simulate_final_balance(initial, periods):
+# Original game function (from Questions 4-5)
+def simulate_original_game(initial, years):
     balance = initial
-    for i in range(periods):
-        coin_flip = np.random.binomial(1, 0.5)
-        if coin_flip == 1:
-            balance = balance + 100  # $100 gain
+    for _ in range(years):
+        flip = np.random.binomial(1, p_heads)
+        if flip == 1:
+            balance *= 1.5  # +50% on heads
         else:
-            balance = balance - 100  # $100 loss
+            balance *= 0.6   # -40% on tails
     return balance
 
-# Run multiple simulations
-final_balances = [simulate_final_balance(initial_balance, n_periods) for _ in range(n_sims)]
+# Modified game function (betting 50% of balance each round)
+def simulate_modified_game(initial, years):
+    balance = initial
+    for _ in range(years):
+        flip = np.random.binomial(1, p_heads)
+        bet_amount = balance * 0.5  # Bet exactly 50% of current balance
+        
+        if flip == 1:
+            # Win: bet increases by 50%, so total balance = remaining 50% + bet*1.5
+            balance = (balance - bet_amount) + (bet_amount * 1.5)
+        else:
+            # Lose: bet decreases by 40%, so total balance = remaining 50% + bet*0.6
+            balance = (balance - bet_amount) + (bet_amount * 0.6)
+    return balance
 
-# Create data frame
-distribution_data = pd.DataFrame({
-    'sim_num': range(1, n_sims + 1),
-    'final_balance': final_balances
-})
+# Run simulations for both strategies
+original_balances = [simulate_original_game(initial_balance, n_years) for _ in range(n_sims)]
+modified_balances = [simulate_modified_game(initial_balance, n_years) for _ in range(n_sims)]
 
-# Create histogram
-fig, ax = plt.subplots(figsize=(10, 6))
-ax.hist(distribution_data['final_balance'], bins=20, color='plum', alpha=0.8, edgecolor='black')
-ax.axvline(initial_balance, color='red', linestyle='--', linewidth=2, label='Initial Balance')
-ax.set_title(f'Distribution of Final Account Balances\n100 Simulations, {n_periods} Periods Each', 
-             fontsize=14, fontweight='bold')
-ax.set_xlabel('Final Balance ($)', fontsize=12)
-ax.set_ylabel('Frequency', fontsize=12)
-ax.legend()
-ax.grid(True, alpha=0.3)
+# Calculate probabilities
+prob_original_above_10k = np.mean(np.array(original_balances) > 10000)
+prob_modified_above_10k = np.mean(np.array(modified_balances) > 10000)
 
-# Format x-axis as currency
-ax.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'${x:,.0f}'))
+# Create comparison histogram
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 7))
+
+# Original game histogram
+ax1.hist(original_balances, bins=20, color='lightblue', alpha=0.7, edgecolor='black')
+ax1.axvline(10000, color='red', linestyle='--', linewidth=2, label='$10,000 Threshold')
+ax1.set_title('Original Game Strategy\n(Full Balance Multiplicative)', fontsize=12, fontweight='bold')
+ax1.set_xlabel('Final Balance ($)', fontsize=11)
+ax1.set_ylabel('Frequency', fontsize=11)
+ax1.legend()
+ax1.grid(True, alpha=0.3)
+ax1.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f'${x:,.0f}'))
+
+# Modified game histogram
+ax2.hist(modified_balances, bins=20, color='lightgreen', alpha=0.7, edgecolor='black')
+ax2.axvline(10000, color='red', linestyle='--', linewidth=2, label='$10,000 Threshold')
+ax2.set_title('Modified Game Strategy\n(Betting 50% of Balance)', fontsize=12, fontweight='bold')
+ax2.set_xlabel('Final Balance ($)', fontsize=11)
+ax2.set_ylabel('Frequency', fontsize=11)
+ax2.legend()
+ax2.grid(True, alpha=0.3)
+ax2.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f'${x:,.0f}'))
 
 plt.tight_layout()
 plt.show()
 
-# Summary statistics
-mean_balance = distribution_data['final_balance'].mean()
-median_balance = distribution_data['final_balance'].median()
-prob_above_initial = (distribution_data['final_balance'] > initial_balance).mean()
-
-print("Summary Statistics:")
-print(f"Mean balance: ${mean_balance:,.2f}")
-print(f"Median balance: ${median_balance:,.2f}")
-print(f"Probability above initial: {prob_above_initial:.3f}")
+# Print results
+print("Strategy Comparison Results:")
+print(f"Original Game - Probability above $10,000: {prob_original_above_10k:.3f} ({prob_original_above_10k:.1%})")
+print(f"Modified Game - Probability above $10,000: {prob_modified_above_10k:.3f} ({prob_modified_above_10k:.1%})")
+print(f"")
+print(f"Answer: The probability of ending above $10,000 is {prob_modified_above_10k:.1%} for the modified game.")
+print(f"This is {'HIGHER' if prob_modified_above_10k > prob_original_above_10k else 'LOWER'} than the original game ({prob_original_above_10k:.1%}).")
 ```
-
-:::
