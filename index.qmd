@@ -150,9 +150,122 @@ print("Expected balance > $1,000?", "Yes" if is_positive else "No")
 
 3. **Single Simulation:** Run one simulation showing the dynamics of your account balance over time. Make an object-oriented matplotlib OR ggplot2 plot showing your simulated account balance over time (i.e. as you age). Comment on the results, are you happy?
 
+## Answer: Below is a single simulation of the original game (multiplicative: +50% on heads, -40% on tails) over 30 years with an object-oriented Matplotlib plot. The final balance can vary greatly; a single path can end very high or very low, so happiness depends on the particular sequence of flips. Overall, years 10 to mid 20, I am not too happy because my account balance is very low. Moreover, starting with $!,000 at age 0 and ending with $200 at age 30, I lost over $800 which is not a good outcome of the simulation; I would have preferred to see my account balance grow over time.
+
+
+```{python}
+#| label: q3-single-simulation
+#| echo: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Reproducibility
+np.random.seed(123)
+
+# Parameters (original game rules)
+initial_balance = 1000.0
+n_years = 30  # simulate 30 annual flips (e.g., age 25 to 55)
+p_heads = 0.5
+
+# Simulate coin flips: 1 = heads (+50%), 0 = tails (-40%)
+flips = np.random.binomial(n=1, p=p_heads, size=n_years)
+
+# Evolve balance multiplicatively
+balances = [initial_balance]
+for flip in flips:
+    if flip == 1:
+        balances.append(balances[-1] * 1.5)
+    else:
+        balances.append(balances[-1] * 0.6)
+
+# Create time index (years 0..n_years)
+years = np.arange(n_years + 1)
+
+# OO Matplotlib plot
+fig, ax = plt.subplots(figsize=(9, 5))
+ax.plot(years, balances, color='steelblue', linewidth=2, marker='o', markersize=4)
+ax.set_title('Single Simulation: Account Balance Over Time (Original Game)', fontsize=13, fontweight='bold')
+ax.set_xlabel('Year', fontsize=11)
+ax.set_ylabel('Account Balance ($)', fontsize=11)
+ax.grid(True, alpha=0.3)
+
+# Format y-axis as currency
+ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f'${x:,.0f}'))
+
+plt.tight_layout()
+plt.show()
+
+print(f"Final balance after {n_years} years: ${balances[-1]:,.2f}")
+```
+
 ### Questions to Answer for 85% Grade on Challenge
 
 4. **Multiple Simulations:** Run 100 simulations modelling the dynamics of your account balance over time. Make an object-oriented matplotlib OR ggplot2 plot showing a probability distribution of the 100 simulatedaccount balance at age 55. Comment on the results, are you happy? Why or why not?
+
+## Answer: Below are 100 simulations of the original game over 30 years (age 25 to 55) with a Matplotlib histogram showing the distribution of final balances. The results show extreme variability - while some paths end very high, many end very low due to the multiplicative nature of the game.
+
+```{python}
+#| label: q4-multiple-simulations
+#| echo: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Reproducibility
+np.random.seed(456)
+
+# Parameters (original game rules)
+initial_balance = 1000.0
+n_years = 30  # simulate 30 annual flips (age 25 to 55)
+n_sims = 100
+p_heads = 0.5
+
+# Function to simulate one path
+def simulate_one_path(initial, years):
+    balance = initial
+    for _ in range(years):
+        flip = np.random.binomial(1, p_heads)
+        if flip == 1:
+            balance *= 1.5  # +50% on heads
+        else:
+            balance *= 0.6   # -40% on tails
+    return balance
+
+# Run 100 simulations
+final_balances = [simulate_one_path(initial_balance, n_years) for _ in range(n_sims)]
+
+# OO Matplotlib histogram
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.hist(final_balances, bins=20, color='plum', alpha=0.8, edgecolor='black', linewidth=0.8)
+ax.axvline(initial_balance, color='red', linestyle='--', linewidth=2, label='Initial Balance ($1,000)')
+ax.set_title('Distribution of Final Account Balances at Age 55\n100 Simulations of Original Game', 
+             fontsize=14, fontweight='bold')
+ax.set_xlabel('Final Balance ($)', fontsize=12)
+ax.set_ylabel('Frequency', fontsize=12)
+ax.legend()
+ax.grid(True, alpha=0.3)
+
+# Format x-axis as currency
+ax.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f'${x:,.0f}'))
+
+plt.tight_layout()
+plt.show()
+
+# Summary statistics
+mean_balance = np.mean(final_balances)
+median_balance = np.median(final_balances)
+prob_above_initial = np.mean(np.array(final_balances) > initial_balance)
+max_balance = np.max(final_balances)
+min_balance = np.min(final_balances)
+
+print(f"Summary Statistics (100 simulations):")
+print(f"Mean final balance: ${mean_balance:,.2f}")
+print(f"Median final balance: ${median_balance:,.2f}")
+print(f"Probability above $1,000: {prob_above_initial:.3f}")
+print(f"Maximum balance: ${max_balance:,.2f}")
+print(f"Minimum balance: ${min_balance:,.2f}")
+```
 
 ### Questions to Answer for 95% Grade on Challenge
 
