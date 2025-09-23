@@ -9,16 +9,13 @@ execute:
   eval: true
 ---
 
-
-:::
-
 1. **Expected Value Analysis:** What is the "expected value" of your account balance after 1 coin flip for the original game?
 
 ## The expected value of the account balance after 1 coin flip for the original game is $1000 * (0.5 * 1.5 + 0.5 * 0.6) = $1050. Therefore, the expected value is positive and $1050.
 
 ```{python}
 #| label: q1-expected-value
-#| echo: true
+#| echo: false
 
 initial_balance = 1000
 gain_rate = 0.5    # +50% on heads
@@ -38,7 +35,7 @@ print(f"Expected value after one flip: ${expected_value:,.0f}")
 
 ```{python}
 #| label: q2-expectation-vs-reality
-#| echo: true
+#| echo: false
 
 initial_balance = 1000
 gain_rate = 0.5   # +50% on heads
@@ -64,7 +61,7 @@ print("Expected balance > $1,000?", "Yes" if is_positive else "No")
 
 ```{python}
 #| label: q3-single-simulation
-#| echo: true
+#| echo: false
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -115,7 +112,7 @@ print(f"Final balance after {n_years} years: ${balances[-1]:,.2f}")
 ## Answer: Below are 100 simulations of the original game over 30 years (age 25 to 55) with a Matplotlib histogram showing the distribution of final balances. I did buckets for every $500 and for any value above $10,000, I placed it in that bucket. I am not very happy with the results because there is a 70% chance that my account balance by age 55 will be below the $1,000 threshold. Therefore, I am not a risky player so there is no point of me trying to play this game since most likely, I will end up losing money. There is a small chance to hit the lottery and end up with over $10,000, but that risk is not worth it statistically. 
 ```{python}
 #| label: q4-multiple-simulations
-#| echo: true
+#| echo: false
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -219,7 +216,7 @@ print(f"Minimum balance: ${min_balance:,.2f}")
 
 ```{python}
 #| label: q5-probability-analysis
-#| echo: true
+#| echo: false
 
 # Use the same final_balances from Question 4 simulations
 # (In practice, you'd use the results from the previous simulation)
@@ -276,7 +273,7 @@ print(f"Answer: The probability that your account balance will be greater than $
 
 ```{python}
 #| label: q6-strategy-comparison
-#| echo: true
+#| echo: false
 
 import numpy as np
 import matplotlib.pyplot as plt
