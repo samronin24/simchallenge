@@ -125,7 +125,28 @@ print(f"Expected value after one flip: ${expected_value:,.0f}")
 
 2. **Expectation vs. Reality:** Is the expected value positive or negative? Do you expect your account to be worth more or less than $1,000 based on this result?
 
-## The expected value is positive with a gain of $50. Therefore, I expect my account to be worth more than $1,000.cod
+## The expected value is positive with a gain of $50. Therefore, I expect my account to be worth more than $1,000.
+
+```{python}
+#| label: q2-expectation-vs-reality
+#| echo: true
+
+initial_balance = 1000
+gain_rate = 0.5   # +50% on heads
+loss_rate = 0.4   # -40% on tails
+p_heads = 0.5
+p_tails = 0.5
+
+balance_if_heads = initial_balance * (1 + gain_rate)
+balance_if_tails = initial_balance * (1 - loss_rate)
+expected_value = p_heads * balance_if_heads + p_tails * balance_if_tails
+
+is_positive = expected_value > initial_balance
+
+print(f"Expected value: ${expected_value:,.0f}")
+print("Is expected value positive?", "Yes" if expected_value > initial_balance else "No")
+print("Expected balance > $1,000?", "Yes" if is_positive else "No")
+```
 
 3. **Single Simulation:** Run one simulation showing the dynamics of your account balance over time. Make an object-oriented matplotlib OR ggplot2 plot showing your simulated account balance over time (i.e. as you age). Comment on the results, are you happy?
 
